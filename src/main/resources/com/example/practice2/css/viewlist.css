@@ -1,0 +1,35 @@
+/* ===== LISTVIEW BACKGROUND ===== */
+.list-view {
+    -fx-background-color: white;
+    -fx-control-inner-background: white;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-background-radius: 10; /* optional */
+    -fx-border-radius: 10;
+}
+
+/* Remove the ugly default focus borders */
+.list-view:focused {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+/* ===== LIST CELL DEFAULT STYLE ===== */
+.list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+    -fx-border-color: transparent;
+}
+
+/* ===== HOVER EFFECT ===== */
+.list-cell:hover {
+    -fx-background-color: #e6e6e6;   /* light gray hover */
+}
+
+/* ===== SELECTED / CLICK EFFECT ===== */
+.list-cell:selected {
+    -fx-background-color: #d0d0d0;   /* darker gray when selected */
+    -fx-text-fill: black;
+}

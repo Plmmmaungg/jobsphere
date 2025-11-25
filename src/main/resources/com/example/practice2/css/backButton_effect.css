@@ -1,0 +1,24 @@
+.button {
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-cursor: hand;
+
+}
+/* Hover effect */
+.button:hover {
+    -fx-background-color: #77c2de;
+
+
+}
+
+/* Pressed effect */
+.button:pressed {
+    -fx-background-color: #479ebf;
+
+
+}
+
+/* Focused (keyboard focus) */
+.button:focused {
+    -fx-border-width: 2;
+}

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="1270.0" spacing="20.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.SignUpController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <VBox alignment="CENTER" prefHeight="639.0" prefWidth="1030.0">
+        <children>
+            <HBox alignment="CENTER" prefHeight="629.0" prefWidth="1030.0">
+                <children>
+                    <VBox alignment="BASELINE_RIGHT" prefHeight="630.0" prefWidth="949.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                        <children>
+                            <AnchorPane prefHeight="733.0" prefWidth="950.0">
+                                <children>
+
+                                    <!-- Left Image Background -->
+                                    <VBox layoutX="-4.0" prefHeight="630.0" prefWidth="477.0">
+                                        <children>
+                                            <ImageView fitHeight="711.0" fitWidth="480.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply; -fx-opacity: 40;">
+                                                <image>
+                                                    <Image url="@images/image/background.jpg" />
+                                                </image>
+                                                <viewport>
+                                                    <Rectangle2D height="400.0" minX="3.0" minY="4.0" width="300.0" />
+                                                </viewport>
+                                            </ImageView>
+                                        </children>
+                                    </VBox>
+
+                                    <!-- Logo -->
+                                    <ImageView fitHeight="227.0" fitWidth="349.0" layoutX="534.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@images/image/logo color.png" />
+                                        </image>
+                                    </ImageView>
+
+                                    <!-- Username -->
+                                    <TextField fx:id="usernameField" layoutX="587.0" layoutY="270.0" prefHeight="44.0" prefWidth="254.0" promptText="Username" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-padding: 0 0 0 40;" />
+
+                                    <!-- Password -->
+                                    <PasswordField fx:id="passwordField" layoutX="586.0" layoutY="323.0" prefHeight="44.0" prefWidth="254.0" promptText="Password" style="-fx-background-radius: 30; -fx-background-color: white; -fx-border-color: black; -fx-border-radius: 30; -fx-padding: 0 0 0 40;" />
+
+                                    <!-- Sign up Button -->
+                                    <Button layoutX="586.0" layoutY="378.0" onAction="#onRegisterClick" prefHeight="44.0" prefWidth="254.0" stylesheets="@css/buttonLogin_effect.css" text="Sign up" textFill="WHITE">
+                                        <font>
+                                            <Font size="14.0" />
+                                        </font>
+                                    </Button>
+
+                                    <!-- Left side text -->
+                                    <AnchorPane prefHeight="640.0" prefWidth="474.0">
+                                        <children>
+                                            <ImageView fitHeight="270.0" fitWidth="450.0" layoutX="36.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/image/logo_white.png" />
+                                                </image>
+                                            </ImageView>
+                                            <Text fill="WHITE" layoutX="40.0" layoutY="355.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="The jobsphere refers to the entire ecosystem of employment opportunities, career paths, labor markets, and professional development. It includes all sectors, industries, and job roles—ranging from traditional employment to freelancing and gig work" textAlignment="CENTER" wrappingWidth="393.7013854980469">
+                                                <effect>
+                                                    <DropShadow />
+                                                </effect>
+                                            </Text>
+                                        </children>
+                                    </AnchorPane>
+
+                                    <!-- Back Button -->
+                                    <Button fx:id="backButton2" layoutX="875.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" prefHeight="35.0" prefWidth="35.0" stylesheets="@css/backButton_effect.css">
+                                        <graphic>
+                                            <ImageView fitHeight="31.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                                <image>
+                                                    <Image url="@images/image/backIcon.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                    <Label fx:id="statusLabel" alignment="CENTER" layoutX="565.0" layoutY="439.0" opacity="0.0" prefHeight="33.0" prefWidth="310.0" style="fx-alignment: centered;" textFill="RED" />
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="596.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
+                              <image>
+                                 <Image url="@images/image/userIcon.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="595.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
+                              <image>
+                                 <Image url="@images/image/lockIcon.png" />
+                              </image>
+                           </ImageView>
+
+
+                                </children>
+                            </AnchorPane>
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+</VBox>

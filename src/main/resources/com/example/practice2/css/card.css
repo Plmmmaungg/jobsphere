@@ -1,0 +1,45 @@
+/* company_card.css */
+
+/* 🧱 Card Container */
+.anchor {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 10;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Hover effect - subtle elevation */
+.vbox:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 12, 0, 0, 4);
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* 🖼️ Logo inside the card */
+.company-card .image-view {
+    -fx-fit-width: 120;
+    -fx-fit-height: 120;
+    -fx-preserve-ratio: true;
+}
+
+/* ⚙️ Delete (three-dot) button */
+.button {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-opacity: 0.7;
+    -fx-rotate: 90;
+}
+
+/* Hover effect for delete button */
+.button:hover {
+    -fx-opacity: 1.0;
+    -fx-text-fill: #ff4d4d;
+}

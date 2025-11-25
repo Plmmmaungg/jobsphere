@@ -1,0 +1,8 @@
+.label {
+  font-weight: 900;         /* <-- Most bold */
+  color: white;             /* White text */
+  font-size: 24px;          /* Adjust size as needed */
+  text-align: center;       /* Center the text */
+  background: transparent;  /* Keep background clear */
+  font-family: sans-serif;  /* Or your preferred font */
+}

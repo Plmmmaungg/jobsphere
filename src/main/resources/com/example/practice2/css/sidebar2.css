@@ -1,0 +1,22 @@
+/* sidebar.css */
+
+/* Style for all sidebar buttons */
+.button {
+    -fx-background-color: #1a1a1a;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
+    -fx-font-family: "Franklin Gothic Book";
+    -fx-font-size: 17px;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+/* Hover effect */
+.button:hover {
+    -fx-background-color: #1a1a1a; /* slightly lighter black */
+}
+
+/* Active/pressed effect */
+.button:pressed {
+    -fx-background-color: #333333;
+}

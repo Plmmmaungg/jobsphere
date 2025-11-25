@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.practice2.testing.UserPositionController">
+
+    <children>
+
+        <!-- ChoiceBox (loads positions from database) -->
+        <ChoiceBox fx:id="positionChoiceBox"
+                   layoutX="187.0"
+                   layoutY="175.0"
+                   prefWidth="150.0" />
+
+        <!-- Label above ChoiceBox -->
+        <Text layoutX="190.0"
+              layoutY="158.0"
+              text="Choose position" />
+
+        <!-- Display selected position -->
+        <Text fx:id="selectedPositionText"
+              layoutX="145.0"
+              layoutY="265.0"
+              text="Selected position will appear here" />
+
+        <!-- Save Button -->
+        <Button layoutX="283.0"
+                layoutY="214.0"
+                text="Save"
+                onAction="#onSaveClick" />
+
+        <!-- Back Button -->
+        <Button layoutX="283.0"
+                layoutY="312.0"
+                text="Back"
+                onAction="#onBackClick" />
+
+    </children>
+
+</AnchorPane>

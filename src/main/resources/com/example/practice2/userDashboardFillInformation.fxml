@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.CompanyInformationController">
+
+    <children>
+        <VBox prefHeight="834.0" prefWidth="1212.0">
+            <children>
+                <HBox prefHeight="702.0" prefWidth="1356.0">
+
+                    <!-- Sidebar -->
+                    <VBox prefHeight="702.0" prefWidth="262.0" style="-fx-background-color: black;">
+                        <children>
+
+                            <VBox alignment="CENTER" prefHeight="756.0" prefWidth="262.0">
+                                <children>
+                                    <AnchorPane prefHeight="705.0" prefWidth="262.0">
+                                        <children>
+                                            <ImageView fitHeight="179.0" fitWidth="266.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/image/logo_white.png" />
+                                                </image>
+                                            </ImageView>
+
+                                            <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onUserDashboardClick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar2.css" text="     Dashboard" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Franklin Gothic Book" size="17.0" />
+                                                </font>
+                                            </Button>
+
+                                            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="55.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/image/dashboard logo.png" />
+                                                </image>
+                                            </ImageView>
+
+                                            <Button fx:id="profileButton" layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onUserProfileClick" prefHeight="50.0" prefWidth="241.0" style="-fx-padding: 0 30 0 0;" stylesheets="@css/sidebar.css" text="     Profile" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Franklin Gothic Book" size="17.0" />
+                                                </font>
+                                            </Button>
+
+                                            <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/image/profile_icon.png" />
+                                                </image>
+                                            </ImageView>
+
+                                            <Text fill="WHITE" layoutX="119.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello!">
+                                                <font>
+                                                    <Font size="13.0" />
+                                                </font>
+                                            </Text>
+
+                                            <VBox alignment="CENTER" layoutY="210.0" prefHeight="26.0" prefWidth="266.0">
+                                                <children>
+                                                    <Label fx:id="usernameLabel" text="Label" textFill="WHITE">
+                                                        <font>
+                                                            <Font size="17.0" />
+                                                        </font>
+                                                    </Label>
+                                                </children>
+                                            </VBox>
+
+                                            <Button fx:id="inboxButton" layoutX="12.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#onUserInboxClick" prefHeight="50.0" prefWidth="241.0" style="-fx-background-radius: 20; -fx-padding: 0 30 0 0;" stylesheets="@css/sidebar.css" text="     Inbox" textFill="WHITE">
+                                                <font>
+                                                    <Font name="Franklin Gothic Book" size="17.0" />
+                                                </font>
+                                            </Button>
+
+                                            <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@images/image/mail.png" />
+                                                </image>
+                                            </ImageView>
+
+                                        </children>
+                                    </AnchorPane>
+                                </children>
+                            </VBox>
+
+                            <VBox alignment="BOTTOM_CENTER" prefHeight="237.0" prefWidth="260.0">
+                                <children>
+                                    <HBox alignment="CENTER" prefHeight="81.0" prefWidth="260.0">
+                                        <children>
+                                            <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="24.0" onMouseClicked="#onSignOutClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                                <image>
+                                                    <Image url="@images/image/sign out logo.png" />
+                                                </image>
+                                            </ImageView>
+
+                                            <Text fx:id="signOutButton" fill="WHITE" onMouseClicked="#onSignOutClick" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Sign out" textAlignment="CENTER" wrappingWidth="64.36807402968407">
+                                                <font>
+                                                    <Font name="Franklin Gothic Medium" size="17.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+
+                        </children>
+                    </VBox>
+
+                    <!-- MAIN CONTENT AREA -->
+                    <AnchorPane>
+                        <children>
+                            <VBox prefHeight="741.0" prefWidth="1005.0" style="-fx-background-color: #f2f2f2;">
+                                <children>
+
+                                    <HBox prefHeight="57.0" prefWidth="1005.0" style="-fx-background-color: grey;">
+                                        <children>
+                                            <VBox alignment="CENTER" prefHeight="103.0" prefWidth="255.0" style="-fx-background-color: grey;">
+                                                <children>
+                                                    <Label text="Company">
+                                                        <font><Font size="20.0" /></font>
+                                                    </Label>
+                                                </children>
+                                            </VBox>
+
+                                            <VBox alignment="CENTER" prefHeight="57.0" prefWidth="255.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 15 15 0 0;">
+                                                <children>
+                                                    <Label text="Information">
+                                                        <font><Font size="20.0" /></font>
+                                                    </Label>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </HBox>
+
+                                    <!-- FIXED: COMPANY NAME + LOGO + DESCRIPTION -->
+                                    <HBox prefHeight="109.0" prefWidth="1005.0">
+                                        <children>
+
+                                            <VBox alignment="CENTER" prefHeight="69.0" prefWidth="244.0" style="-fx-padding: 10 0 0 0;">
+                                                <children>
+                                                    <ImageView fx:id="companyLogoImageView" fitHeight="79.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true" />
+                                                </children>
+                                            </VBox>
+
+                                            <VBox prefWidth="758.0" spacing="10" style="-fx-padding: 10;">
+                                                <children>
+
+                                                    <Label fx:id="companyNameLabel" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+                                                    <TextFlow fx:id="descriptionLabel" prefHeight="92.0" prefWidth="716.0" />
+
+                                                </children>
+                                            </VBox>
+
+                                        </children>
+                                    </HBox>
+
+                                    <!-- FORM SCROLL AREA -->
+                                    <ScrollPane fx:id="companyScrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="523.0" prefWidth="1005.0" style="-fx-background-color:transparent;" vbarPolicy="NEVER">
+                                        <VBox fx:id="displayCardCompanyOffer" prefHeight="311.0" prefWidth="1003.0" spacing="30">
+                                            <children>
+
+                                                <!-- FORM BACKGROUND -->
+                                                <AnchorPane prefHeight="757.0" prefWidth="1003.0">
+                                                    <children>
+
+                                                        <!-- (Form fields remain unchanged) -->
+                                                        <!-- I did not modify any form structure as requested -->
+
+                                                        <!-- Labels and Inputs -->
+                                                        <Label layoutX="142.0" layoutY="66.0" text="Last Name">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="525.0" layoutY="150.0" text="Age">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="596.0" layoutY="151.0" text="Gender">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="144.0" layoutY="231.0" text="Contact">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="525.0" layoutY="230.0" text="Email">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="148.0" layoutY="308.0" text="Address">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="612.0" layoutY="382.0" text="Nationality">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="149.0" layoutY="381.0" text="Occupation">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="392.0" layoutY="383.0" text="Religion">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <TextField fx:id="lastNameField" layoutX="138.0" layoutY="89.0" prefHeight="39.0" prefWidth="273.0" promptText="e.g Dela Cruz" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <Label layoutX="84.0" layoutY="15.0" text="FILL INFORMATION:">
+                                                            <font><Font name="Arial Rounded MT Bold" size="19.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="97.0" layoutY="494.0" text="AVAILABLE POSITION:">
+                                                            <font><Font name="Arial Rounded MT Bold" size="19.0" /></font>
+                                                        </Label>
+
+                                                        <ChoiceBox fx:id="positionChoiceBox" layoutX="258.0" layoutY="545.0" prefHeight="40.0" prefWidth="171.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 15; -fx-border-radius: 10;" />
+
+                                                        <Label layoutX="143.0" layoutY="628.0" text="ATTACH FILE:">
+                                                            <font><Font name="Arial Rounded MT Bold" size="19.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="206.0" layoutY="676.0" text="2x2 Picture:">
+                                                            <font><Font name="Franklin Gothic Book" size="19.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="229.0" layoutY="764.0" text="Resume:">
+                                                            <font><Font name="Franklin Gothic Book" size="19.0" /></font>
+                                                        </Label>
+
+                                                        <Button fx:id="attachPictureButton" layoutX="333.0" layoutY="673.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Attach File" />
+                                                        <Button fx:id="attachResumeButton" layoutX="336.0" layoutY="761.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Attach File" />
+
+                                                        <Label layoutX="259.0" layoutY="850.0" text="Phil:">
+                                                            <font><Font name="Franklin Gothic Book" size="19.0" /></font>
+                                                        </Label>
+
+                                                        <Button fx:id="attachPhilButton" layoutX="335.0" layoutY="849.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Attach File" />
+
+                                                        <Button fx:id="submitButton" layoutX="758.0" layoutY="1025.0" mnemonicParsing="false" onMouseClicked="#onSubmitClick" stylesheets="@css/smallbutton.css" text="submit" />
+
+                                                        <Label layoutX="424.0" layoutY="69.0" text="First Name">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <Label layoutX="715.0" layoutY="70.0" text="Middle Initial">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <TextField fx:id="firstNameField" layoutX="419.0" layoutY="89.0" prefHeight="39.0" prefWidth="284.0" promptText="e.g Juan Miguelle" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="middleInitialField" layoutX="712.0" layoutY="90.0" prefHeight="39.0" prefWidth="131.0" promptText="D" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <Label layoutX="141.0" layoutY="149.0" text="Date of Birth">
+                                                            <font><Font size="14.0" /></font>
+                                                        </Label>
+
+                                                        <TextField fx:id="dobField" layoutX="140.0" layoutY="170.0" prefHeight="39.0" prefWidth="375.0" promptText="e.g December 10, 2025" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="ageField" layoutX="523.0" layoutY="170.0" prefHeight="39.0" prefWidth="62.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="contactField" layoutX="143.0" layoutY="250.0" prefHeight="39.0" prefWidth="372.0" promptText="+63 09876543211" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="emailField" layoutX="524.0" layoutY="250.0" prefHeight="39.0" prefWidth="317.0" promptText="e.g juan123@gmail.com" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="addressField" layoutX="145.0" layoutY="329.0" prefHeight="39.0" prefWidth="697.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="occupationField" layoutX="145.0" layoutY="402.0" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="nationalityField" layoutX="609.0" layoutY="402.0" prefHeight="39.0" prefWidth="236.0" promptText="e.g Filipino/Chinese" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <TextField fx:id="religionField" layoutX="387.0" layoutY="403.0" prefHeight="39.0" prefWidth="214.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 10; -fx-background-radius: 10;" />
+
+                                                        <AnchorPane layoutX="594.0" layoutY="169.0" prefHeight="40.0" prefWidth="232.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;">
+                                                            <children>
+                                                                <CheckBox fx:id="maleCheckBox" layoutX="32.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@css/checkbox.css" text="Male" />
+                                                                <CheckBox fx:id="femaleCheckBox" layoutX="124.0" layoutY="11.0" mnemonicParsing="false" stylesheets="@css/checkbox.css" text="Female" />
+                                                            </children>
+                                                        </AnchorPane>
+
+                                                    </children>
+                                                </AnchorPane>
+
+                                            </children>
+                                        </VBox>
+                                    </ScrollPane>
+
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>

@@ -1,0 +1,34 @@
+/* style.css */
+
+/* Base button style (Sign Up button) */
+.button {
+    -fx-background-color: #77c2de;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-pref-width: 254;
+    -fx-pref-height: 44;
+    -fx-cursor: hand;
+
+}
+
+/* Hover effect */
+.button:hover {
+    -fx-background-color: #5aaac8;
+
+
+}
+
+/* Pressed effect */
+.button:pressed {
+    -fx-background-color: #479ebf;
+
+
+}
+
+/* Focused (keyboard focus) */
+.button:focused {
+    -fx-border-width: 2;
+}
+
+

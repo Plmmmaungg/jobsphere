@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.CreatedAdminCompanyController">
+
+    <children>
+        <VBox prefHeight="834.0" prefWidth="1212.0">
+            <children>
+                <HBox prefHeight="843.0" prefWidth="1212.0">
+
+                    <!-- Sidebar -->
+                    <VBox prefHeight="702.0" prefWidth="262.0" style="-fx-background-color: black;">
+                        <children>
+
+                            <VBox alignment="CENTER" prefHeight="756.0" prefWidth="262.0">
+                        <children>
+                           <AnchorPane prefHeight="705.0" prefWidth="262.0">
+                              <children>
+                                        <ImageView fitHeight="179.0" fitWidth="266.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/image/logo_white.png" />
+                                            </image>
+                                        </ImageView>
+                                 <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar2.css" text="     Dashboard" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="55.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/dashboard logo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onPositionClick" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar.css" text="Position" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/edit logo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <ImageView fx:id="companyLogoView" fitHeight="120.0" fitWidth="123.0" layoutX="72.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
+                                 <Label fx:id="companyNameLabel" alignment="TOP_CENTER" layoutX="35.0" layoutY="227.0" prefHeight="50.0" prefWidth="200.0" style="-fx-font-weight: 900;" textFill="WHITE">
+                                    <font>
+                                       <Font name="Yu Gothic UI Semibold" size="25.0" />
+                                    </font></Label>
+                              </children>
+                           </AnchorPane>
+                        </children>
+                            </VBox>
+
+                            <VBox alignment="BOTTOM_CENTER" prefHeight="237.0" prefWidth="260.0">
+                                <children>
+                                    <HBox alignment="CENTER" prefHeight="81.0" prefWidth="260.0">
+                                        <children>
+                                            <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="24.0" onMouseClicked="#onsignOutButton" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                                <image>
+                                                    <Image url="@images/image/sign out logo.png" />
+                                                </image>
+                                            </ImageView>
+                                            <Text fx:id="signOutButton" fill="WHITE" onMouseClicked="#onsignOutButton" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Sign out" textAlignment="CENTER" wrappingWidth="64.36804342269897">
+                                                <font>
+                                                    <Font name="Franklin Gothic Medium" size="17.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Main Content Area -->
+                    <VBox prefHeight="702.0" prefWidth="1056.0" style="-fx-background-color: #f2f2f2;">
+                        <children>
+                            <AnchorPane onDragDetected="#onPositionClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
+                        <children>
+                           <ListView fx:id="ListOfApplicant" layoutX="383.0" layoutY="127.0" prefHeight="548.0" prefWidth="588.0" stylesheets="@css/viewlist.css" />
+                           <ListView fx:id="RecentlyOpen" layoutX="50.0" layoutY="389.0" prefHeight="286.0" prefWidth="294.0" stylesheets="@css/viewlist.css" />
+                           <AnchorPane layoutX="73.0" layoutY="145.0" prefHeight="206.0" prefWidth="249.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                              <children>
+                                 <Label fx:id="TotalOfApplicantText" alignment="CENTER" layoutX="83.0" layoutY="77.0" prefHeight="50.0" prefWidth="87.0" text="1">
+                                    <font>
+                                       <Font size="40.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="56.0" layoutY="25.0" text="Total of Applicants">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </AnchorPane>
+                        </children></AnchorPane>
+                        </children>
+                    </VBox>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>

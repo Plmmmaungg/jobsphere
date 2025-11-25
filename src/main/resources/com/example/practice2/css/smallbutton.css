@@ -1,0 +1,20 @@
+
+
+/* 🎨 Attach file button */
+.button {
+    -fx-background-color: #77c2de;
+    -fx-text-fill: white;
+    -fx-font-family: "Franklin Gothic Book";
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: #66b5d3;
+}
+
+.button:pressed {
+    -fx-background-color: #5aa4c0;
+}

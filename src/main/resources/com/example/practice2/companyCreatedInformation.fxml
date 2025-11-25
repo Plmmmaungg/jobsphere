@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.ApplicationDetailsController">
+
+    <children>
+        <VBox prefHeight="834.0" prefWidth="1212.0" style="-fx-background-color: #f2f2f2;">
+            <children>
+                <HBox prefHeight="843.0" prefWidth="1212.0" style="-fx-background-color: #f2f2f2;">
+
+                    <!-- Sidebar -->
+                    <VBox prefHeight="702.0" prefWidth="262.0" style="-fx-background-color: black;">
+                        <children>
+
+                            <VBox alignment="CENTER" prefHeight="756.0" prefWidth="262.0">
+                        <children>
+                           <AnchorPane prefHeight="705.0" prefWidth="262.0">
+                              <children>
+                                        <ImageView fitHeight="179.0" fitWidth="266.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/image/logo_white.png" />
+                                            </image>
+                                        </ImageView>
+                                 <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar2.css" text="     Dashboard" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="55.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/dashboard logo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="241.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-padding: 0 30 0 0;" text="Bin" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/delete icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <ImageView fx:id="companyLogoView" fitHeight="120.0" fitWidth="123.0" layoutX="72.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
+                                 <Label fx:id="companyNameLabel" alignment="TOP_CENTER" layoutX="35.0" layoutY="227.0" prefHeight="50.0" prefWidth="200.0" style="-fx-font-weight: 900;" textFill="WHITE">
+                                    <font>
+                                       <Font name="Yu Gothic UI Semibold" size="25.0" />
+                                    </font></Label>
+                              </children>
+                           </AnchorPane>
+                        </children>
+                            </VBox>
+
+                            <VBox alignment="BOTTOM_CENTER" prefHeight="237.0" prefWidth="260.0">
+                                <children>
+                                    <HBox alignment="CENTER" prefHeight="81.0" prefWidth="260.0">
+                                        <children>
+                                            <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="24.0" onMouseClicked="#signOutButton" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                                <image>
+                                                    <Image url="@images/image/sign out logo.png" />
+                                                </image>
+                                            </ImageView>
+                                            <Text fx:id="signOutButton" fill="WHITE" onMouseClicked="#signOutButton" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Sign out" textAlignment="CENTER" wrappingWidth="64.36804342269897">
+                                                <font>
+                                                    <Font name="Franklin Gothic Medium" size="17.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </VBox>
+               <HBox prefHeight="702.0" prefWidth="34.0" />
+               <HBox prefHeight="702.0" prefWidth="940.0">
+                  <children>
+                     <VBox prefHeight="702.0" prefWidth="1101.0">
+                        <children>
+                           <VBox prefHeight="76.0" prefWidth="939.0">
+                              <children>
+                                 <HBox prefHeight="118.0" prefWidth="939.0">
+                                    <children>
+                                       <AnchorPane prefHeight="83.0" prefWidth="939.0">
+                                          <children>
+                                             <Button layoutX="867.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#onBackButtonClick" prefHeight="26.0" prefWidth="33.0" stylesheets="@css/backButton_effect.css">
+                                                <graphic>
+                                                   <ImageView fx:id="onBackButtonClick" fitHeight="35.0" fitWidth="28.0" onMouseClicked="#onBackButtonClick" pickOnBounds="true" preserveRatio="true">
+                                                      <image>
+                                                         <Image url="@images/image/backIcon.png" />
+                                                      </image>
+                                                   </ImageView>
+                                                </graphic></Button>
+                                          </children>
+                                       </AnchorPane>
+                                    </children>
+                                 </HBox>
+                              </children>
+                           </VBox>
+                           <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="614.0" prefWidth="939.0" style="-fx-background-color: white; -fx-pannable: true; -fx-background-radius: 30;" vbarPolicy="NEVER">
+                              <content>
+                                 <VBox>
+                                    <children>
+                                       <AnchorPane prefHeight="1182.0" prefWidth="939.0" style="-fx-background-color: white; -fx-background-radius: 30;" stylesheets="@css/backButton_effect.css">
+                                          <children>
+                                             <Label layoutX="80.0" layoutY="28.0" text="APPLICATION INFORMATION">
+                                                <font>
+                                                   <Font name="Arial Rounded MT Bold" size="23.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="132.0" layoutY="83.0" text="Name                :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="132.0" layoutY="127.0" text="Age                    :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="131.0" layoutY="168.0" text="Gender              :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="132.0" layoutY="211.0" text="Contact             :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="132.0" layoutY="250.0" text="Email                 :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="131.0" layoutY="290.0" text="Address             :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="130.0" layoutY="332.0" text="Nationality         :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="130.0" layoutY="375.0" text="Occupation        :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="131.0" layoutY="413.0" text="Status                :">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewName" layoutX="284.0" layoutY="84.0" text="Name                ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewAge" layoutX="284.0" layoutY="126.0" text="Age                    ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewGender" layoutX="283.0" layoutY="168.0" text="Gender              ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewContact" layoutX="284.0" layoutY="211.0" text="Contact             ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewEmail" layoutX="284.0" layoutY="251.0" text="Email                 ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewAddress" layoutX="283.0" layoutY="291.0" text="Address             ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewNationality" layoutX="282.0" layoutY="332.0" text="Nationality         ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewOccupation" layoutX="282.0" layoutY="374.0" text="Occupation        ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewStatus" layoutX="283.0" layoutY="414.0" text="Status                ">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <VBox layoutX="705.0" layoutY="87.0" prefHeight="160.0" prefWidth="160.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 30;">
+                                                <children>
+                                                   <ImageView fx:id="view2x2Photo" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" style="-fx-blend-mode: multiply;" />
+                                                </children>
+                                             </VBox>
+                                             <Label layoutX="116.0" layoutY="473.0" text="POSITION:">
+                                                <font>
+                                                   <Font name="Arial Rounded MT Bold" size="18.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewPosition" layoutX="167.0" layoutY="507.0" text="Position">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="118.0" layoutY="562.0" text="ATTACH FILE:">
+                                                <font>
+                                                   <Font name="Arial Rounded MT Bold" size="18.0" />
+                                                </font>
+                                             </Label>
+                                             <Button fx:id="viewResume" layoutX="200.0" layoutY="602.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Resume" />
+                                             <Button fx:id="viewPhilH" layoutX="201.0" layoutY="657.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="PhilH" />
+                                             <TextArea layoutX="54.0" layoutY="849.0" prefHeight="250.0" prefWidth="834.0" promptText="Message" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-padding: 0 20 0 20;">
+                                                <font>
+                                                   <Font size="18.0" />
+                                                </font>
+                                             </TextArea>
+                                             <Button fx:id="btnSendMessage" layoutX="786.0" layoutY="1119.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Send" />
+                                             <ImageView fx:id="viewFile" fitHeight="655.0" fitWidth="474.0" layoutX="271.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true" />
+                                          </children>
+                                       </AnchorPane>
+                                    </children>
+                                 </VBox>
+                              </content>
+                           </ScrollPane>
+                        </children>
+                     </VBox>
+                  </children>
+               </HBox>
+               <HBox prefHeight="702.0" prefWidth="34.0" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>

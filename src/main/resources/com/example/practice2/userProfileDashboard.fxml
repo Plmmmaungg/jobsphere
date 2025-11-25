@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.UserProfileController">
+
+    <children>
+        <VBox prefHeight="834.0" prefWidth="1212.0">
+            <children>
+                <HBox prefHeight="843.0" prefWidth="1212.0">
+
+                    <!-- Sidebar -->
+                    <VBox prefHeight="702.0" prefWidth="262.0" style="-fx-background-color: black;">
+                        <children>
+
+                            <VBox alignment="CENTER" prefHeight="756.0" prefWidth="262.0">
+                        <children>
+                           <AnchorPane prefHeight="705.0" prefWidth="262.0">
+                              <children>
+                                        <ImageView fitHeight="179.0" fitWidth="266.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/image/logo_white.png" />
+                                            </image>
+                                        </ImageView>
+                                 <Button fx:id="dashboardButton" layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onUserDashboardClick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar.css" text="     Dashboard" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="55.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/dashboard logo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="241.0" style="-fx-padding: 0 30 0 0;" stylesheets="@css/sidebar2.css" text="     Profile" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/profile_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" layoutX="119.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello!">
+                                    <font>
+                                       <Font size="13.0" />
+                                    </font>
+                                 </Text>
+                                 <VBox alignment="CENTER" layoutY="210.0" prefHeight="26.0" prefWidth="266.0">
+                                    <children>
+                                       <Label fx:id="usernameLabel" text="Label" textFill="WHITE">
+                                          <font>
+                                             <Font size="17.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </VBox>
+                                 <Button fx:id="inboxButton" layoutX="12.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#onUserInboxClick" prefHeight="50.0" prefWidth="241.0" style="-fx-background-radius: 20; -fx-padding: 0 30 0 0;" stylesheets="@css/sidebar.css" text="     Inbox" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/mail.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </AnchorPane>
+                        </children>
+                            </VBox>
+
+                            <VBox alignment="BOTTOM_CENTER" prefHeight="237.0" prefWidth="260.0">
+                                <children>
+                                    <HBox alignment="CENTER" prefHeight="81.0" prefWidth="260.0">
+                                        <children>
+                                            <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="24.0" onMouseClicked="#onSignOutClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                                <image>
+                                                    <Image url="@images/image/sign out logo.png" />
+                                                </image>
+                                            </ImageView>
+                                            <Text fx:id="signOutButton" fill="WHITE" onMouseClicked="#onSignOutClick" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Sign out" textAlignment="CENTER" wrappingWidth="64.36807402968407">
+                                                <font>
+                                                    <Font name="Franklin Gothic Medium" size="17.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Main Content Area -->
+                    <VBox prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
+                  <children>
+                     <HBox prefHeight="57.0" prefWidth="1005.0" style="-fx-background-color: grey;">
+                        <children>
+                           <VBox alignment="CENTER" prefHeight="103.0" prefWidth="255.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 0 15 0 0;">
+                              <children>
+                                 <Label text="Information">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </VBox>
+                           <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="255.0">
+                              <children>
+                                 <Label text="Applied Job">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children></VBox>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="106.0" prefWidth="1005.0">
+                        <children>
+                           <VBox alignment="CENTER" prefHeight="69.0" prefWidth="244.0" style="-fx-padding: 10 0 0 0;">
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                              <children>
+                                 <ImageView fitHeight="108.0" fitWidth="214.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/logo color.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </VBox>
+                        </children>
+                     </HBox>
+                     <VBox>
+                        <children>
+                           <AnchorPane opacity="0.81" prefHeight="510.0" prefWidth="1004.0">
+                              <children>
+                                 <VBox layoutX="111.0" layoutY="32.0" style="-fx-background-color: white; -fx-background-radius: 30;">
+                                    <children>
+                                       <ImageView fx:id="view2x2" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" />
+                                    </children>
+                                 </VBox>
+                                 <Label layoutX="453.0" layoutY="82.0" text="Name">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="453.0" layoutY="118.0" text="Age">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="452.0" layoutY="158.0" text="Gender">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Line endX="173.55169677734375" endY="-161.3975067138672" layoutX="233.0" layoutY="199.0" startX="173.55169677734375" startY="234.77215576171875" />
+                                 <Label layoutX="75.0" layoutY="298.0" text="CONTACT INFORMATION">
+                                    <font>
+                                       <Font size="11.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewContact" layoutX="150.0" layoutY="330.0" text="Phone:">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewEmail" layoutX="150.0" layoutY="375.0" text="E-mail:">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewAddress" layoutX="150.0" layoutY="413.0" text="Address:">
+                                    <font>
+                                       <Font size="16.0" />
+                                    </font>
+                                 </Label>
+                                 <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="102.0" layoutY="328.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/phoneLogo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <ImageView fitHeight="36.0" fitWidth="35.0" layoutX="93.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/mailBlack.png" />
+                                    </image>
+                                 </ImageView>
+                                 <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="100.0" layoutY="410.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/addressLogo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Label layoutX="442.0" layoutY="54.0" text="PERSONAL INFORMATION">
+                                    <font>
+                                       <Font size="11.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="454.0" layoutY="193.0" text="Nationality">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="454.0" layoutY="231.0" text="Status">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="455.0" layoutY="265.0" text="Religion">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Button layoutX="497.0" layoutY="372.0" mnemonicParsing="false" onMouseClicked="#onViewResume" stylesheets="@css/smallbutton.css" text="View Resume" />
+                                 <Label layoutX="450.0" layoutY="341.0" text="ATTACH FILE">
+                                    <font>
+                                       <Font size="11.0" />
+                                    </font>
+                                 </Label>
+                                 <Button layoutX="639.0" layoutY="372.0" mnemonicParsing="false" onMouseClicked="#onViewPhilH" stylesheets="@css/smallbutton.css" text="View PhilH" />
+                                 <Label fx:id="viewName" layoutX="598.0" layoutY="83.0" text="Name">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewAge" layoutX="598.0" layoutY="119.0" text="Age">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewGender" layoutX="597.0" layoutY="159.0" text="Gender">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewNationality" layoutX="599.0" layoutY="194.0" text="Nationality">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewStatus" layoutX="599.0" layoutY="232.0" text="Status">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="viewReligion" layoutX="600.0" layoutY="266.0" text="Occupation">
+                                    <font>
+                                       <Font size="19.0" />
+                                    </font>
+                                 </Label>
+                                 <ImageView fx:id="viewFile" fitHeight="663.0" fitWidth="484.0" layoutX="279.0" layoutY="-157.0" onMouseClicked="#onFileImageClick" pickOnBounds="true" preserveRatio="true" />
+                              </children>
+                           </AnchorPane>
+                        </children>
+                     </VBox>
+                  </children>
+                    </VBox>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>

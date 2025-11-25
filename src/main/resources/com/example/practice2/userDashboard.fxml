@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.ScrollPane?>
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.UserDashboardController">
+
+    <children>
+        <VBox prefHeight="834.0" prefWidth="1212.0">
+            <children>
+                <HBox prefHeight="843.0" prefWidth="1212.0">
+
+                    <!-- Sidebar -->
+                    <VBox prefHeight="702.0" prefWidth="262.0" style="-fx-background-color: black;">
+                        <children>
+
+                            <VBox alignment="CENTER" prefHeight="756.0" prefWidth="262.0">
+                        <children>
+                           <AnchorPane prefHeight="705.0" prefWidth="262.0">
+                              <children>
+                                        <ImageView fitHeight="179.0" fitWidth="266.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@images/image/logo_white.png" />
+                                            </image>
+                                        </ImageView>
+                                 <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar2.css" text="     Dashboard" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="55.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/dashboard logo.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Button fx:id="profileButton" layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onUserProfileClick" prefHeight="50.0" prefWidth="241.0" style="-fx-padding: 0 30 0 0;" stylesheets="@css/sidebar.css" text="     Profile" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/profile_icon.png" />
+                                    </image>
+                                 </ImageView>
+                                 <Text fill="WHITE" layoutX="119.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello!">
+                                    <font>
+                                       <Font size="13.0" />
+                                    </font>
+                                 </Text>
+                                 <VBox alignment="CENTER" layoutY="210.0" prefHeight="26.0" prefWidth="266.0">
+                                    <children>
+                                       <Label fx:id="usernameLabel" text="Label" textFill="WHITE">
+                                          <font>
+                                             <Font size="17.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </VBox>
+                                 <Button fx:id="inboxButton" layoutX="12.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#onUserInboxClick" prefHeight="50.0" prefWidth="241.0" style="-fx-background-radius: 20; -fx-padding: 0 30 0 0;" stylesheets="@css/sidebar.css" text="     Inbox" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@images/image/mail.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </AnchorPane>
+                        </children>
+                            </VBox>
+
+                            <VBox alignment="BOTTOM_CENTER" prefHeight="237.0" prefWidth="260.0">
+                                <children>
+                                    <HBox alignment="CENTER" prefHeight="81.0" prefWidth="260.0">
+                                        <children>
+                                            <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="24.0" onMouseClicked="#onSignOutClick" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                                <image>
+                                                    <Image url="@images/image/sign out logo.png" />
+                                                </image>
+                                            </ImageView>
+                                            <Text fx:id="signOutButton" fill="WHITE" onMouseClicked="#onSignOutClick" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Sign out" textAlignment="CENTER" wrappingWidth="64.36807402968407">
+                                                <font>
+                                                    <Font name="Franklin Gothic Medium" size="17.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Main Content Area -->
+                    <VBox prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
+                  <children>
+                     <HBox prefHeight="57.0" prefWidth="1005.0" style="-fx-background-color: grey;">
+                        <children>
+                           <VBox alignment="CENTER" prefHeight="103.0" prefWidth="255.0" style="-fx-background-color: #f2f2f2; -fx-background-radius: 0 15 0 0;">
+                              <children>
+                                 <Label text="Company">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </VBox>
+                           <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="57.0" prefWidth="255.0">
+                              <children>
+                                 <Label text="Information">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children></VBox>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="67.0" prefWidth="1005.0">
+                        <children>
+                           <VBox alignment="CENTER" prefHeight="69.0" prefWidth="244.0" style="-fx-padding: 10 0 0 0;">
+                              <children>
+                                 <Label alignment="CENTER" text="Job Offer:">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                    <opaqueInsets>
+                                       <Insets />
+                                    </opaqueInsets>
+                                 </Label>
+                              </children>
+                              <opaqueInsets>
+                                 <Insets />
+                              </opaqueInsets>
+                           </VBox>
+                        </children>
+                     </HBox>
+                      <ScrollPane fx:id="companyScrollPane" fitToHeight="true" fitToWidth="true"
+                                  hbarPolicy="NEVER" vbarPolicy="NEVER" pannable="true"
+                                  style="-fx-background-color:transparent;">
+                          <!-- Changed to VBox for vertical stacking of rows -->
+                          <VBox fx:id="displayCardCompanyOffer"
+                                alignment="CENTER_LEFT"
+                                spacing="30"
+                                style="-fx-padding: 50 50 50 80;"
+                                prefHeight="577.0"
+                                prefWidth="1005.0" />
+                      </ScrollPane>
+
+                  </children>
+                    </VBox>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</VBox>
