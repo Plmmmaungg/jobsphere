@@ -408,6 +408,8 @@ public class CompanyInformationController {
         loadScene(event, "login.fxml");
     }
 
+
+
     // Small scene loader reused
     private void loadScene(MouseEvent event, String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
