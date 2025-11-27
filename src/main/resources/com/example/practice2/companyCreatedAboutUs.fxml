@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.CreatedAdminCompanyController">
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.AboutUsController">
 
     <children>
         <VBox prefHeight="834.0" prefWidth="1212.0">
@@ -31,7 +30,7 @@
                                                 <Image url="@images/image/logo_white.png" />
                                             </image>
                                         </ImageView>
-                                 <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar2.css" text="     Dashboard" textFill="WHITE">
+                                 <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onDashboardclick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar.css" text="     Dashboard" textFill="WHITE">
                                     <font>
                                        <Font name="Franklin Gothic Book" size="17.0" />
                                     </font>
@@ -56,12 +55,12 @@
                                     <font>
                                        <Font name="Yu Gothic UI Semibold" size="25.0" />
                                     </font></Label>
-                                 <Button layoutX="15.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#onAboutUs" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar.css" text="   About us" textFill="WHITE">
+                                 <Button layoutX="12.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#onAboutUs" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar2.css" text="   About us" textFill="WHITE">
                                     <font>
                                        <Font name="Franklin Gothic Book" size="17.0" />
                                     </font>
                                  </Button>
-                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="53.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+                                 <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                        <Image url="@images/image/info.png" />
                                     </image>
@@ -95,25 +94,7 @@
                     <!-- Main Content Area -->
                     <VBox prefHeight="702.0" prefWidth="1056.0" style="-fx-background-color: #f2f2f2;">
                         <children>
-                            <AnchorPane onDragDetected="#onPositionClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
-                        <children>
-                           <ListView fx:id="ListOfApplicant" layoutX="383.0" layoutY="127.0" prefHeight="548.0" prefWidth="588.0" stylesheets="@css/viewlist.css" />
-                           <ListView fx:id="RecentlyOpen" layoutX="50.0" layoutY="389.0" prefHeight="286.0" prefWidth="294.0" stylesheets="@css/viewlist.css" />
-                           <AnchorPane layoutX="73.0" layoutY="145.0" prefHeight="206.0" prefWidth="249.0" style="-fx-background-color: white; -fx-background-radius: 30;">
-                              <children>
-                                 <Label fx:id="TotalOfApplicantText" alignment="CENTER" layoutX="83.0" layoutY="77.0" prefHeight="50.0" prefWidth="87.0" text="1">
-                                    <font>
-                                       <Font size="40.0" />
-                                    </font>
-                                 </Label>
-                                 <Label layoutX="56.0" layoutY="25.0" text="Total of Applicants">
-                                    <font>
-                                       <Font size="18.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </AnchorPane>
-                        </children></AnchorPane>
+                            <AnchorPane onDragDetected="#onPositionClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;" />
                         </children>
                     </VBox>
                 </HBox>

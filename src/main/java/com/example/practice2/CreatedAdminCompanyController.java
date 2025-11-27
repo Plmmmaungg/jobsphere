@@ -121,7 +121,7 @@ public class CreatedAdminCompanyController {
 
     @FXML
     private void onPositionClick(MouseEvent event) throws IOException {
-        Parent registerRoot = FXMLLoader.load(getClass().getResource("companyCreatedDashboardPosition.fxml"));
+        Parent registerRoot = FXMLLoader.load(getClass().getResource("companyCreatedPosition.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(registerRoot));
         stage.show();
@@ -130,6 +130,14 @@ public class CreatedAdminCompanyController {
     @FXML
     private void onsignOutButton(MouseEvent event) throws IOException {
         Parent registerRoot = FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(registerRoot));
+        stage.show();
+    }
+
+    @FXML
+    private void onAboutUs(MouseEvent event) throws IOException {
+        Parent registerRoot = FXMLLoader.load(getClass().getResource("companyCreatedAboutUs.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(registerRoot));
         stage.show();

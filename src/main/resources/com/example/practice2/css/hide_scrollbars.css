@@ -1,0 +1,18 @@
+/* Base styling */
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+
+
+}
+
+/* Hide ONLY the horizontal scrollbar */
+.text-area .scroll-bar {
+    -fx-opacity: 0;
+    -fx-pref-height: 0;
+    visibility: hidden;
+}
+
+
