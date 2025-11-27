@@ -15,6 +15,7 @@ module com.example.practice2 {
     requires java.sql;
     requires java.desktop;
 
+
     opens com.example.practice2 to javafx.fxml;
     exports com.example.practice2;
     exports com.example.practice2.testing;

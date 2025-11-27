@@ -121,11 +121,18 @@ public class CreatedAdminCompanyController {
 
     @FXML
     private void onPositionClick(MouseEvent event) throws IOException {
-        Parent registerRoot = FXMLLoader.load(getClass().getResource("companyCreatedPosition.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedPosition.fxml"));
+        Parent root = loader.load();
+
+        PositionController controller = loader.getController();
+        controller.setCompanyId(companyId);  // <-- VERY IMPORTANT
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(registerRoot));
+        stage.setScene(new Scene(root));
         stage.show();
     }
+
 
     @FXML
     private void onsignOutButton(MouseEvent event) throws IOException {

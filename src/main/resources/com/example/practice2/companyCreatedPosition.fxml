@@ -101,9 +101,9 @@
                            <TextField fx:id="onBranchTextField" layoutX="63.0" layoutY="179.0" prefHeight="40.0" prefWidth="262.0" promptText="Branch" style="-fx-background-color: white; -fx-background-radius: 15;" />
                            <TextField fx:id="onLocationTextField" layoutX="378.0" layoutY="176.0" prefHeight="40.0" prefWidth="265.0" promptText="Location" style="-fx-background-color: white; -fx-background-radius: 15;" />
                            <TextField fx:id="onPositionTextField" layoutX="687.0" layoutY="176.0" prefHeight="40.0" prefWidth="266.0" promptText="Position" style="-fx-background-color: white; -fx-background-radius: 15;" />
-                           <Button fx:id="addPosition" layoutX="904.0" layoutY="229.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="add" />
-                           <Button fx:id="onEdit" layoutX="531.0" layoutY="229.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Edit" />
-                           <Button fx:id="addBranchAddress" layoutX="590.0" layoutY="229.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Add" />
+                           <Button fx:id="addPosition" layoutX="904.0" layoutY="229.0" mnemonicParsing="false" onAction="#addPosition" stylesheets="@css/smallbutton.css" text="add" />
+                           <Button fx:id="onEdit" layoutX="531.0" layoutY="229.0" mnemonicParsing="false" onAction="#addLocation" stylesheets="@css/smallbutton.css" text=" location" />
+                           <Button fx:id="addBranchAddress" layoutX="273.0" layoutY="230.0" mnemonicParsing="false" onAction="#addBranch" stylesheets="@css/smallbutton.css" text="Add" />
                            <ListView fx:id="viewBranch" layoutX="67.0" layoutY="340.0" prefHeight="291.0" prefWidth="259.0" stylesheets="@css/viewlist.css" />
                            <ListView fx:id="viewLocation" layoutX="380.0" layoutY="339.0" prefHeight="291.0" prefWidth="259.0" stylesheets="@css/viewlist.css" />
                            <ListView fx:id="viewPosition" layoutX="693.0" layoutY="340.0" prefHeight="291.0" prefWidth="259.0" stylesheets="@css/viewlist.css" />

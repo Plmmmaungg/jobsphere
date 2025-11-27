@@ -23,6 +23,10 @@ import java.util.regex.Pattern;
 
 public class CompanyInformationController {
 
+    @FXML private ChoiceBox<String> onBranchOption;
+    @FXML private ChoiceBox<String> onLocation;
+    @FXML private ChoiceBox<String> positionChoiceBox;
+
     // --- Company state ---
     private int companyId;
     private String companyName;
@@ -55,7 +59,7 @@ public class CompanyInformationController {
     @FXML private TextField occupationField;
     @FXML private TextField religionField;
 
-    @FXML private ChoiceBox<String> positionChoiceBox;
+
 
     // Attach file buttons (your FXML has Attach File buttons)
     @FXML private Button attachPictureButton;
@@ -90,8 +94,42 @@ public class CompanyInformationController {
 
         // Hook submit (in case FXML did not already map onMouseClicked)
         submitButton.setOnMouseClicked(this::onSubmitClick);
+
+        try {
+            onBranchOption.getItems().setAll(BranchDAO.getBranches(companyId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        onBranchOption.getSelectionModel().selectedItemProperty().addListener((obs, old, selected) -> {
+            loadLocationOptions();
+        });
+
+        onLocation.getSelectionModel().selectedItemProperty().addListener((obs, old, selected) -> {
+            loadPositionOptions();
+        });
+    }
+    private void loadLocationOptions() {
+        try {
+            String branch = onBranchOption.getValue();
+            int branchId = BranchDAO.getBranchId(branch, companyId);
+
+            onLocation.getItems().setAll(LocationDAO.getLocations(companyId, branchId));
+        } catch(Exception e) {}
     }
 
+    private void loadPositionOptions() {
+        try {
+            String branch = onBranchOption.getValue();
+            String location = onLocation.getValue();
+
+            int branchId = BranchDAO.getBranchId(branch, companyId);
+            int locId = LocationDAO.getLocationId(location, branchId, companyId);
+
+            positionChoiceBox.getItems().setAll(PositionDAO.getPositions(companyId, branchId, locId));
+        } catch(Exception e) {}
+    }
     /**
      * Called by the calling controller (UserDashboardController) after loading this FXML.
      * Use this to pass the company id so we can save applicants under the correct company.
@@ -115,6 +153,11 @@ public class CompanyInformationController {
         loadPositionsForCompany();
     }
 
+    public void setCompanyId(int companyId) {
+        this.companyId = companyId;
+    }
+
+
 
 
     // --- Load positions to ChoiceBox from positions table (company-specific) ---
@@ -136,11 +179,8 @@ public class CompanyInformationController {
         }
 
         // Optionally set a placeholder value if none loaded
-        if (positionChoiceBox.getItems().isEmpty()) {
-            positionChoiceBox.getItems().add("General");
-            positionChoiceBox.getItems().add("Teacher");
-        }
-        positionChoiceBox.setValue(positionChoiceBox.getItems().get(0));
+        
+
     }
 
     // --- Attach file handlers ---
@@ -351,10 +391,6 @@ public class CompanyInformationController {
     }
 
 
-
-    public void setCompanyId(int id) {
-        this.companyId = id;
-    }
 
 
 
