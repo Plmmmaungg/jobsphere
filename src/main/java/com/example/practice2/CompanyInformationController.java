@@ -330,7 +330,7 @@ public class CompanyInformationController {
             recentStmt.setString(2, fullName);
             recentStmt.setString(3, companyName); // you already have this field
             recentStmt.setString(4, todayDate);
-            recentStmt.setString(5, "Pending");
+            recentStmt.setString(5, "new");
 
             recentStmt.executeUpdate();
 

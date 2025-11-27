@@ -212,7 +212,7 @@
                                        <Font size="19.0" />
                                     </font>
                                  </Label>
-                                 <Label layoutX="454.0" layoutY="231.0" text="Status">
+                                 <Label layoutX="454.0" layoutY="231.0" text="Occupation">
                                     <font>
                                        <Font size="19.0" />
                                     </font>
@@ -259,7 +259,7 @@
                                        <Font size="19.0" />
                                     </font>
                                  </Label>
-                                 <ImageView fx:id="viewFile" fitHeight="663.0" fitWidth="484.0" layoutX="279.0" layoutY="-157.0" onMouseClicked="#onFileImageClick" pickOnBounds="true" preserveRatio="true" />
+                                 <ImageView fx:id="viewFile" fitHeight="663.0" fitWidth="484.0" layoutX="279.0" layoutY="-157.0" onMouseClicked="#onFileImageClick" pickOnBounds="true" />
                               </children>
                            </AnchorPane>
                         </children>

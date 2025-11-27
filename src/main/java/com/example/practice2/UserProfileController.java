@@ -90,12 +90,12 @@ public class UserProfileController {
         viewAge.setText(rs.getString("age"));
         viewGender.setText(rs.getString("gender"));
         viewNationality.setText(rs.getString("nationality"));
-        viewStatus.setText("Pending");
+        viewStatus.setText(rs.getString("occupation"));
         viewReligion.setText(rs.getString("religion"));
 
-        viewContact.setText("Phone: " + rs.getString("contact"));
-        viewEmail.setText("E-mail: " + rs.getString("email"));
-        viewAddress.setText("Address: " + rs.getString("address"));
+        viewContact.setText(rs.getString("contact"));
+        viewEmail.setText(rs.getString("email"));
+        viewAddress.setText(rs.getString("address"));
 
         String picturePath = rs.getString("picture_path");
         if (picturePath != null && new File(picturePath).exists()) {
@@ -131,7 +131,7 @@ public class UserProfileController {
                 viewAge.setText(rs.getString("age"));
                 viewGender.setText(rs.getString("gender"));
                 viewNationality.setText(rs.getString("nationality"));
-                viewStatus.setText("Pending");
+                viewStatus.setText("New");
                 viewReligion.setText(rs.getString("religion"));
 
                 viewContact.setText("Phone: " + rs.getString("contact"));

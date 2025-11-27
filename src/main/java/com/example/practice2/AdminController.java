@@ -56,11 +56,16 @@ public class AdminController {
     private File logoFile;
 
     @FXML
-    private Label usernameLabel; // make sure this matches the fx:id in your FXML
+    private Label usernameLabel;
+
+    private String rawUsername;
 
     public void setAdminUsername(String username) {
+        this.rawUsername = username;
         usernameLabel.setText("@" + username);
     }
+
+
 
 
 
@@ -321,13 +326,18 @@ public class AdminController {
         stage.setScene(new Scene(registerRoot));
         stage.show();
     }
+
     @FXML
-    private void onBinButtonClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("bin.fxml"));
+    private void onBinButtonClick(MouseEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("bin.fxml"));
+        Parent root = loader.load();
+        BinController controller = loader.getController();
+        controller.setAdminUsername(rawUsername);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 
     @FXML
     private void onDashboardButtonClick(MouseEvent event) throws IOException {
