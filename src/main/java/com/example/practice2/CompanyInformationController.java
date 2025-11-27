@@ -95,11 +95,11 @@ public class CompanyInformationController {
         // Hook submit (in case FXML did not already map onMouseClicked)
         submitButton.setOnMouseClicked(this::onSubmitClick);
 
-        try {
-            onBranchOption.getItems().setAll(BranchDAO.getBranches(companyId));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            onBranchOption.getItems().setAll(BranchDAO.getBranches(companyId));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
         onBranchOption.getSelectionModel().selectedItemProperty().addListener((obs, old, selected) -> {
@@ -147,6 +147,12 @@ public class CompanyInformationController {
 
         if (logoPath != null && new File(logoPath).exists()) {
             companyLogoImageView.setImage(new Image(new File(logoPath).toURI().toString()));
+        }
+
+        try {
+            onBranchOption.getItems().setAll(BranchDAO.getBranches(companyId));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         // Populate positions for this company (if any)
