@@ -220,13 +220,20 @@ public class CompanyInformationController {
     }
 
 
-    // in CompanyInformationController
+    @FXML
+    private Label usernameLabel;
+
+    // FIX: currentUsername must exist because it is used in many places.
+    private String currentUserEmail;
     private String currentUsername;
 
+
     public void setUsername(String username) {
-        this.currentUsername = username;
-        System.out.println("CompanyInformationController got username: " + username);
+        this.currentUserEmail = username;
+        usernameLabel.setText("@" + username);
     }
+
+
 
 
 
@@ -387,21 +394,47 @@ public class CompanyInformationController {
 
 
 
-    // --- Navigation helper methods (existing handlers) ---
     @FXML
     private void onUserDashboardClick(MouseEvent event) throws Exception {
-        loadScene(event, "userDashboard.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("userDashboard.fxml"));
+        Parent root = loader.load();
+
+        UserDashboardController controller = loader.getController();
+        controller.setUsername(currentUserEmail);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML
     private void onUserProfileClick(MouseEvent event) throws Exception {
-        loadScene(event, "userProfileDashboard.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("userProfileDashboard.fxml"));
+        Parent root = loader.load();
+
+        UserProfileController controller = loader.getController(); // ✅ FIXED
+        controller.setUsername(currentUserEmail);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
+
+
 
     @FXML
     private void onUserInboxClick(MouseEvent event) throws Exception {
-        loadScene(event, "userInboxDashboard.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("userInboxDashboard.fxml"));
+        Parent root = loader.load();
+
+        UserInboxDashboardController controller = loader.getController();
+        controller.setUsername(currentUserEmail);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
+
 
     @FXML
     private void onSignOutClick(MouseEvent event) throws Exception {

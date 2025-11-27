@@ -75,7 +75,7 @@ public class ApplicationDetailsController {
                 viewAddress.setText(rs.getString("address"));
                 viewNationality.setText(rs.getString("nationality"));
                 viewOccupation.setText(rs.getString("occupation"));
-                viewStatus.setText("Pending");
+                viewStatus.setText(rs.getString("religion"));
                 viewPosition.setText(rs.getString("position"));
 
                 String photo = rs.getString("picture_path");

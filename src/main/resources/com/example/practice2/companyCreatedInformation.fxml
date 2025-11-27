@@ -153,12 +153,12 @@
                                                    <Font name="Franklin Gothic Book" size="19.0" />
                                                 </font>
                                              </Label>
-                                             <Label layoutX="130.0" layoutY="375.0" text="Religion">
+                                             <Label layoutX="130.0" layoutY="375.0" text="Occupation      :">
                                                 <font>
                                                    <Font name="Franklin Gothic Book" size="19.0" />
                                                 </font>
                                              </Label>
-                                             <Label layoutX="131.0" layoutY="413.0" text="Status                :">
+                                             <Label layoutX="131.0" layoutY="413.0" text="Religion             :">
                                                 <font>
                                                    <Font name="Franklin Gothic Book" size="19.0" />
                                                 </font>
@@ -213,23 +213,23 @@
                                                    <ImageView fx:id="view2x2Photo" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" style="-fx-blend-mode: multiply;" />
                                                 </children>
                                              </VBox>
-                                             <Label layoutX="116.0" layoutY="473.0" text="POSITION:">
+                                             <Label layoutX="116.0" layoutY="473.0" text="COMPANY APPLIED:">
                                                 <font>
                                                    <Font name="Arial Rounded MT Bold" size="18.0" />
                                                 </font>
                                              </Label>
-                                             <Label fx:id="viewPosition" layoutX="167.0" layoutY="507.0" text="Position">
+                                             <Label layoutX="167.0" layoutY="507.0" text="Branch:">
                                                 <font>
                                                    <Font name="Franklin Gothic Book" size="19.0" />
                                                 </font>
                                              </Label>
-                                             <Label layoutX="118.0" layoutY="562.0" text="ATTACH FILE:">
+                                             <Label layoutX="118.0" layoutY="607.0" text="ATTACH FILE:">
                                                 <font>
                                                    <Font name="Arial Rounded MT Bold" size="18.0" />
                                                 </font>
                                              </Label>
-                                             <Button fx:id="viewResume" layoutX="200.0" layoutY="602.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Resume" />
-                                             <Button fx:id="viewPhilH" layoutX="201.0" layoutY="657.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="PhilH" />
+                                             <Button fx:id="viewResume" layoutX="200.0" layoutY="647.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Resume" />
+                                             <Button fx:id="viewPhilH" layoutX="201.0" layoutY="702.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="PhilH" />
                                              <TextArea layoutX="54.0" layoutY="849.0" prefHeight="250.0" prefWidth="834.0" promptText="Message" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-padding: 0 20 0 20;">
                                                 <font>
                                                    <Font size="18.0" />
@@ -237,6 +237,31 @@
                                              </TextArea>
                                              <Button fx:id="btnSendMessage" layoutX="786.0" layoutY="1119.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Send" />
                                              <ImageView fx:id="viewFile" fitHeight="655.0" fitWidth="474.0" layoutX="271.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true" />
+                                             <Label layoutX="364.0" layoutY="510.0" text="Location:">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label layoutX="581.0" layoutY="512.0" text="Position:">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewBranch" layoutX="192.0" layoutY="538.0" text="Branch">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewLocation" layoutX="389.0" layoutY="541.0" text="Location">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
+                                             <Label fx:id="viewPosition" layoutX="606.0" layoutY="543.0" text="Position">
+                                                <font>
+                                                   <Font name="Franklin Gothic Book" size="19.0" />
+                                                </font>
+                                             </Label>
                                           </children>
                                        </AnchorPane>
                                     </children>
