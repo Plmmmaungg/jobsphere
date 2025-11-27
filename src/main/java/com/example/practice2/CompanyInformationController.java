@@ -316,8 +316,10 @@ public class CompanyInformationController {
     private boolean saveApplicantToDatabase() {
 
         String insertApplicantSQL =
-                "INSERT INTO applicants (company_id, first_name, last_name, middle_initial, date_of_birth, age, gender, contact, email, address, nationality, occupation, religion, picture_path, resume_path, philhealth_path, position, user_id) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "INSERT INTO applicants (company_id, first_name, last_name, middle_initial, date_of_birth, age, gender, contact, " +
+                        "email, address, nationality, occupation, religion, picture_path, resume_path, philhealth_path, " +
+                        "position, branch, location) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         String insertRecentSQL =
                 "INSERT INTO recently_applied (applicant_id, name, company, date, status) VALUES (?, ?, ?, ?, ?)";
@@ -352,11 +354,9 @@ public class CompanyInformationController {
             applicantStmt.setString(15, selectedResumePath);
             applicantStmt.setString(16, selectedPhilPath);
 
-            String position = positionChoiceBox.getValue();
-            applicantStmt.setString(17, position == null ? "" : position);
-            applicantStmt.setInt(18, getLoggedInUserId(currentUsername));
-
-
+            applicantStmt.setString(17, positionChoiceBox.getValue());
+            applicantStmt.setString(18, onBranchOption.getValue());
+            applicantStmt.setString(19, onLocation.getValue());
 
             applicantStmt.executeUpdate();
 

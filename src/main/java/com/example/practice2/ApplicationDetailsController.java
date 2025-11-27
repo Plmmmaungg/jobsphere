@@ -32,6 +32,8 @@ public class ApplicationDetailsController {
     @FXML private Label viewOccupation;
     @FXML private Label viewStatus;
     @FXML private Label viewPosition;
+    @FXML private Label viewLocation;
+    @FXML private Label viewBranch;
 
     @FXML private ImageView view2x2Photo;
 
@@ -77,6 +79,8 @@ public class ApplicationDetailsController {
                 viewOccupation.setText(rs.getString("occupation"));
                 viewStatus.setText(rs.getString("religion"));
                 viewPosition.setText(rs.getString("position"));
+                viewLocation.setText(rs.getString("location"));
+                viewBranch.setText(rs.getString("branch"));
 
                 String photo = rs.getString("picture_path");
                 if (photo != null)
