@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -112,10 +113,14 @@ public class UserDashboardController {
     private void onSignOutClick(MouseEvent event) throws Exception {
         loadScene(event, "login.fxml");
     }
-
-    @FXML
-    private void onUserInboxClick(MouseEvent event) throws Exception {
-        loadScene(event, "userInboxDashboard.fxml");
+    @FXML private void onUserInboxClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("userInboxDashboard.fxml"));
+        Parent root = loader.load();
+        UserInboxDashboardController controller = loader.getController();
+        controller.setUsername(currentUserEmail);
+        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     @FXML

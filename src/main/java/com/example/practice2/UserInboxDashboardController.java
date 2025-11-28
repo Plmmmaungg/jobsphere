@@ -29,18 +29,22 @@ public class UserInboxDashboardController {
         stage.setScene(new Scene(registerRoot));
         stage.show();
     }
-    @FXML private void onUserDashboardClick(MouseEvent event) throws IOException {
+
+
+    @FXML
+    private void onUserDashboardClick(MouseEvent event) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("userDashboard.fxml"));
         Parent root = loader.load();
+
         UserDashboardController controller = loader.getController();
-        controller.setUsername(currentUsername);
+        controller.setUsername(currentUserEmail);
         controller.setCompanyId(companyId);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
+
     }
-
-
 
     @FXML
     private void onUserProfileClick(MouseEvent event) throws Exception {
@@ -48,7 +52,7 @@ public class UserInboxDashboardController {
         Parent root = loader.load();
 
         UserProfileController controller = loader.getController();
-        controller.setUsername(currentUsername);
+        controller.setUsername(currentUserEmail);
         controller.setCompanyId(companyId);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -71,6 +75,5 @@ public class UserInboxDashboardController {
 
 
 }
-
 
 
