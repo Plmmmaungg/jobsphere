@@ -26,7 +26,16 @@ public class AdminController {
     @FXML private TableColumn<RecentApplication, String> viewCompany;
     @FXML private TableColumn<RecentApplication, String> viewDate;
     @FXML private TableColumn<RecentApplication, String> viewStatus;
+    private String companyName;
+    private Runnable onLoginSuccess;
 
+    public void setCompanyName(String name) {
+        this.companyName = name;
+    }
+
+    public void setOnLoginSuccess(Runnable action) {
+        this.onLoginSuccess = action;
+    }
 
     @FXML
     private AnchorPane addCompanyForm;
@@ -188,9 +197,15 @@ public class AdminController {
             AnchorPane securityForm = loader.load();
 
             SecurityFormController controller = loader.getController();
-            controller.setCompanyData(companyName, username, password, logo); // ✅ pass credentials
-            controller.setCompanyId(companyId);
+            controller.setCompanyData(companyId, companyName, username, password, logo);
             controller.setParentController(this);
+
+            controller.setOnLoginSuccess(() -> {
+                displayCardCompany.setVisible(false);
+                displayCardCompany.setManaged(false);
+            });
+
+
 
             // show only security form
             securityFormContainer.getChildren().setAll(securityForm);
@@ -223,11 +238,58 @@ public class AdminController {
     // ✅ Automatically load existing companies from DB
     @FXML
     public void initialize() {
+        recentlyApply.setRowFactory(tv -> {
+            TableRow<RecentApplication> row = new TableRow<>();
+
+            row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getClickCount() == 1) {
+                    RecentApplication selected = row.getItem();
+                    openCompanyLoginFromRow(selected, row);
+                }
+            });
+
+
+            return row;
+        });
+
         loadCompaniesFromDatabase();
         loadRecentApplications();
 
 
     }
+
+    private void openCompanyLoginFromRow(RecentApplication selected, TableRow<RecentApplication> row) {
+        String companyName = selected.getCompany();
+
+        try (Connection conn = DatabaseConnection.connect()) {
+
+            String sql = "SELECT id, company_name, username, password, logo_path FROM companies WHERE company_name = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, companyName);
+
+            var rs = stmt.executeQuery();
+            if (rs.next()) {
+                int companyId = rs.getInt("id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+
+                String logoPath = rs.getString("logo_path");
+                Image logo = (logoPath != null && new File(logoPath).exists())
+                        ? new Image(new File(logoPath).toURI().toString())
+                        : null;
+
+                // open existing Security Form
+                openSecurityForm(companyId, companyName, username, password, logo);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
     private void loadRecentApplications() {
         String sql = "SELECT name, company, date, status FROM recently_applied";

@@ -46,6 +46,11 @@ public class SecurityFormController {
 
     @FXML
     private AnchorPane securityFormContainer;
+    private Runnable onLoginSuccess;
+    public void setOnLoginSuccess(Runnable r) {
+        this.onLoginSuccess = r;
+    }
+
 
     // 🔹 Data passed from AdminController
     private String companyName;
@@ -72,15 +77,21 @@ public class SecurityFormController {
     // ------------------------------------------------------------
     // 🔹 Sets data when opening the Security Form
     // ------------------------------------------------------------
-    public void setCompanyData(String companyName, String username, String password, Image logo) {
-        this.companyName = companyName;
-        this.username = username;
-        this.password = password;
+    public void setCompanyData(int id, String name, String user, String pass, Image logo) {
+        this.companyId = id;
+        this.companyName = name;
+        this.username = user;
+        this.password = pass;
         this.logoImage = logo;
 
-        // Only show logo in the form
-        logoPreview.setImage(logo);
+        usernameField.setText("");
+        passwordField.setText("");
+
+        if (logo != null) {
+            logoPreview.setImage(logo);
+        }
     }
+
 
 
     public void setParentController(AdminController controller) {
@@ -108,30 +119,31 @@ public class SecurityFormController {
 
         if (hideDelay != null) hideDelay.stop();
 
-        // 🔸 Validation
         if (enteredUsername.isEmpty() || enteredPassword.isEmpty()) {
             showError("⚠ Please fill in all fields.", Color.ORANGE);
             return;
         }
 
-        // 🔸 Check against credentials of the company
         if (!enteredUsername.equals(username) || !enteredPassword.equals(password)) {
             showError("❌ Invalid username or password.", Color.RED);
             return;
         }
 
-        // ✅ Success: load the next page
+        if (onLoginSuccess != null) {
+            onLoginSuccess.run();
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedDashboard.fxml"));
         Parent root = loader.load();
 
         CreatedAdminCompanyController controller = loader.getController();
         controller.setCompanyData(companyId, companyName, logoImage);
 
-
         Stage stage = (Stage) usernameField.getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 
 
 
