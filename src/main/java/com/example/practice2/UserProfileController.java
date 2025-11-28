@@ -19,6 +19,10 @@ import java.sql.ResultSet;
 
 public class UserProfileController {
 
+    @FXML private Label viewBranch;
+    @FXML private Label viewLocation;
+    @FXML private Label viewPosition;
+    @FXML private ImageView viewLogo;
     @FXML private Label viewName;
     @FXML private Label viewAge;
     @FXML private Label viewGender;
@@ -55,17 +59,22 @@ public class UserProfileController {
         try (Connection conn = DatabaseConnection.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, getLoggedInUserId(currentUserEmail));  // <-- key part
+            stmt.setInt(1, getLoggedInUserId(currentUserEmail));
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 fillProfileFields(rs);
+
+                // MAKE THIS HAPPEN:
+                this.companyId = rs.getInt("company_id");  // ensure companyId is set
+                loadCompanyDetails();  // <-- FIX: load branch, location, position, logo
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     private void loadCompanyApplicantData() {
         String sql = "SELECT * FROM applicants WHERE company_id = ? ORDER BY id DESC LIMIT 1";
@@ -92,6 +101,10 @@ public class UserProfileController {
         viewNationality.setText(rs.getString("nationality"));
         viewStatus.setText(rs.getString("occupation"));
         viewReligion.setText(rs.getString("religion"));
+
+        viewPosition.setText(rs.getString("position"));
+        viewBranch.setText(rs.getString("branch"));
+        viewLocation.setText(rs.getString("location"));
 
         viewContact.setText(rs.getString("contact"));
         viewEmail.setText(rs.getString("email"));
@@ -134,9 +147,14 @@ public class UserProfileController {
                 viewStatus.setText("New");
                 viewReligion.setText(rs.getString("religion"));
 
-                viewContact.setText("Phone: " + rs.getString("contact"));
-                viewEmail.setText("E-mail: " + rs.getString("email"));
-                viewAddress.setText("Address: " + rs.getString("address"));
+                viewPosition.setText(rs.getString("position"));
+                viewBranch.setText(rs.getString("branch"));
+                viewLocation.setText(rs.getString("location"));
+
+
+                viewContact.setText(rs.getString("contact"));
+                viewEmail.setText(rs.getString("email"));
+                viewAddress.setText(rs.getString("address"));
 
                 String picturePath = rs.getString("picture_path");
                 if (picturePath != null && new File(picturePath).exists()) {
@@ -148,10 +166,55 @@ public class UserProfileController {
                 String resume = rs.getString("resume_path");
                 viewFile.setVisible(resume != null && new File(resume).exists());
             }
+
+            loadCompanyDetails();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void loadCompanyDetails() {
+
+        String sql = "SELECT a.position, a.branch, a.location, c.logo_path " +
+                "FROM applicants a " +
+                "JOIN companies c ON a.company_id = c.id " +
+                "WHERE a.company_id = ? " +
+                "ORDER BY a.id DESC LIMIT 1";
+
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, companyId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                // LOGO from companies table
+                String logoPath = rs.getString("logo_path");
+                if (logoPath != null && new File(logoPath).exists()) {
+                    viewLogo.setImage(new Image(new File(logoPath).toURI().toString()));
+                } else {
+                    viewLogo.setImage(null);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadData() {
+        if (currentUserEmail != null) {
+            loadUserApplicantData();
+        }
+        if (companyId != 0) {
+            loadCompanyDetails();
+        }
+    }
+
+
 
 
 
@@ -210,3 +273,4 @@ public class UserProfileController {
         }
     }
 }
+

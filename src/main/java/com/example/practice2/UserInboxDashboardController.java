@@ -16,6 +16,10 @@ public class UserInboxDashboardController {
 
     private int companyId;
 
+    private String currentUsername;
+
+
+
     public void setCompanyId(int id) { this.companyId = id; }
 
     @FXML
@@ -29,7 +33,7 @@ public class UserInboxDashboardController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("userDashboard.fxml"));
         Parent root = loader.load();
         UserDashboardController controller = loader.getController();
-        controller.setUsername(currentUserEmail);
+        controller.setUsername(currentUsername);
         controller.setCompanyId(companyId);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -44,7 +48,7 @@ public class UserInboxDashboardController {
         Parent root = loader.load();
 
         UserProfileController controller = loader.getController();
-        controller.setUsername(currentUserEmail);
+        controller.setUsername(currentUsername);
         controller.setCompanyId(companyId);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

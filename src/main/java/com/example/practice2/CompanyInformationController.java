@@ -1,5 +1,5 @@
 
-        package com.example.practice2;
+package com.example.practice2;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,6 +77,14 @@ public class CompanyInformationController {
     // Basic email regex for lightweight validation
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^.+@.+\\..+$");
 
+    private void loadBranchOptions() {
+        try {
+            onBranchOption.getItems().setAll(BranchDAO.getBranches(companyId));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void initialize() {
         // Ensure gender boxes are mutually exclusive
@@ -119,6 +127,8 @@ public class CompanyInformationController {
         } catch(Exception e) {}
     }
 
+
+
     private void loadPositionOptions() {
         try {
             String branch = onBranchOption.getValue();
@@ -149,14 +159,9 @@ public class CompanyInformationController {
             companyLogoImageView.setImage(new Image(new File(logoPath).toURI().toString()));
         }
 
-        try {
-            onBranchOption.getItems().setAll(BranchDAO.getBranches(companyId));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         // Populate positions for this company (if any)
-        loadPositionsForCompany();
+        loadBranchOptions();
+
     }
 
     public void setCompanyId(int companyId) {
@@ -185,7 +190,7 @@ public class CompanyInformationController {
         }
 
         // Optionally set a placeholder value if none loaded
-        
+
 
     }
 
@@ -275,8 +280,10 @@ public class CompanyInformationController {
 
 
     public void setUsername(String username) {
-        this.currentUserEmail = username;
-        usernameLabel.setText("@" + username);
+        this.currentUsername = username;
+        if (usernameLabel != null) {
+            usernameLabel.setText("@" + username);
+        }
     }
 
 
@@ -322,10 +329,8 @@ public class CompanyInformationController {
     private boolean saveApplicantToDatabase() {
 
         String insertApplicantSQL =
-                "INSERT INTO applicants (company_id, first_name, last_name, middle_initial, date_of_birth, age, gender, contact, " +
-                        "email, address, nationality, occupation, religion, picture_path, resume_path, philhealth_path, " +
-                        "position, branch, location) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "INSERT INTO applicants (company_id, first_name, last_name, middle_initial, date_of_birth, age, gender, contact, email, address, nationality, occupation, religion, picture_path, resume_path, philhealth_path, branch, location, position, user_id) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         String insertRecentSQL =
                 "INSERT INTO recently_applied (applicant_id, name, company, date, status) VALUES (?, ?, ?, ?, ?)";
@@ -360,9 +365,18 @@ public class CompanyInformationController {
             applicantStmt.setString(15, selectedResumePath);
             applicantStmt.setString(16, selectedPhilPath);
 
-            applicantStmt.setString(17, positionChoiceBox.getValue());
-            applicantStmt.setString(18, onBranchOption.getValue());
-            applicantStmt.setString(19, onLocation.getValue());
+            String branch = onBranchOption.getValue();
+            String location = onLocation.getValue();
+            String position = positionChoiceBox.getValue();
+
+
+            applicantStmt.setString(17, branch == null ? "" : branch);
+            applicantStmt.setString(18, location == null ? "" : location);
+            applicantStmt.setString(19, position == null ? "" : position);
+            applicantStmt.setInt(20, getLoggedInUserId(currentUsername));
+
+
+
 
             applicantStmt.executeUpdate();
 
@@ -442,7 +456,8 @@ public class CompanyInformationController {
         Parent root = loader.load();
 
         UserDashboardController controller = loader.getController();
-        controller.setUsername(currentUserEmail);
+        controller.setUsername(currentUsername);
+        controller.setCompanyId(companyId);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -455,7 +470,9 @@ public class CompanyInformationController {
         Parent root = loader.load();
 
         UserProfileController controller = loader.getController(); // ✅ FIXED
-        controller.setUsername(currentUserEmail);
+        controller.setUsername(currentUsername);
+        controller.setCompanyId(companyId);
+
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -470,7 +487,8 @@ public class CompanyInformationController {
         Parent root = loader.load();
 
         UserInboxDashboardController controller = loader.getController();
-        controller.setUsername(currentUserEmail);
+        controller.setUsername(currentUsername);
+        controller.setCompanyId(companyId);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
