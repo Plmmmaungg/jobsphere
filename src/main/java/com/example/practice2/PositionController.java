@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
@@ -14,6 +16,10 @@ import java.io.IOException;
 
 
 public class PositionController {
+
+    @FXML private ImageView companyLogoView;
+    @FXML private Label companyNameLabel;
+
 
     @FXML private TextField onBranchTextField;
     @FXML private TextField onLocationTextField;
@@ -85,6 +91,8 @@ public class PositionController {
         } catch (Exception e) { e.printStackTrace(); }
     }
 
+
+
     @FXML
     private void addLocation() {
         try {
@@ -114,6 +122,21 @@ public class PositionController {
         } catch (Exception e) { e.printStackTrace(); }
     }
 
+    public void setCompanyData(int id, String companyName, Image logo) {
+
+
+        this.companyId = id;
+
+        if (companyName != null)
+            companyNameLabel.setText(companyName);
+
+        if (logo != null)
+            companyLogoView.setImage(logo);
+
+        loadBranches(); // Load company-specific branches
+    }
+
+
 
     @FXML
     private void onsignOutButton(MouseEvent event) throws IOException {
@@ -130,7 +153,8 @@ public class PositionController {
         Parent root = loader.load();
 
         CreatedAdminCompanyController controller = loader.getController();
-        controller.setCompanyData(companyId, null, null); // send only companyId
+        controller.setCompanyData(companyId, companyNameLabel.getText(),   companyLogoView.getImage());      // <-- send company name
+               // send only controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -139,11 +163,18 @@ public class PositionController {
 
     @FXML
     private void onAboutUs(MouseEvent event) throws IOException {
-        Parent registerRoot = FXMLLoader.load(getClass().getResource("companyCreatedAboutUs.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedAboutUs.fxml"));
+        Parent root = loader.load();
+
+        AboutUsController controller = loader.getController();
+        controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(registerRoot));
+        stage.setScene(new Scene(root));
         stage.show();
     }
+
 
     @FXML
     private void onPositionClick(MouseEvent event) throws IOException {

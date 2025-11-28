@@ -126,7 +126,7 @@ public class CreatedAdminCompanyController {
         Parent root = loader.load();
 
         PositionController controller = loader.getController();
-        controller.setCompanyId(companyId);  // <-- VERY IMPORTANT
+        controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
@@ -144,9 +144,16 @@ public class CreatedAdminCompanyController {
 
     @FXML
     private void onAboutUs(MouseEvent event) throws IOException {
-        Parent registerRoot = FXMLLoader.load(getClass().getResource("companyCreatedAboutUs.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedAboutUs.fxml"));
+        Parent root = loader.load();
+
+        AboutUsController controller = loader.getController();
+        controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(registerRoot));
+        stage.setScene(new Scene(root));
         stage.show();
     }
+
 }
