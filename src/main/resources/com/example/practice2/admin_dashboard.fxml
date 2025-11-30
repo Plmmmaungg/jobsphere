@@ -70,6 +70,16 @@
                                  </Label>
                               </children>
                            </VBox>
+                           <Button fx:id="onAboutUs" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#onAboutUs" prefHeight="50.0" prefWidth="241.0" style="-fx-padding: 0 25 0 0;" stylesheets="@css/sidebar.css" text="         About us" textFill="WHITE">
+                              <font>
+                                 <Font name="Franklin Gothic Book" size="17.0" />
+                              </font>
+                           </Button>
+                           <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="53.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@images/image/info.png" />
+                              </image>
+                           </ImageView>
                                 </children>
                             </AnchorPane>
                         </children>
@@ -145,7 +155,7 @@
                               <children>
                                  <AnchorPane prefHeight="100.0" prefWidth="551.0">
                                     <children>
-                                       <TextField layoutX="82.0" layoutY="30.0" prefHeight="38.0" prefWidth="437.0" promptText="search" style="-fx-padding: 0 0 0 40; -fx-background-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" />
+                                       <TextField fx:id="onSearch" layoutX="82.0" layoutY="30.0" prefHeight="38.0" prefWidth="437.0" promptText="search" style="-fx-padding: 0 0 0 40; -fx-background-color: white; -fx-background-radius: 30; -fx-border-radius: 30;" />
                                        <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="93.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.5;">
                                           <image>
                                              <Image url="@images/image/Search-icon.png" />
@@ -205,7 +215,7 @@
                                     <Text layoutX="39.0" layoutY="136.0" text="Description:" />
                                     <Text layoutX="45.0" layoutY="314.0" text="Logo:" />
                                     <TextField fx:id="companyNameField" layoutX="43.0" layoutY="57.0" prefHeight="48.0" prefWidth="354.0" promptText="Enter Company's Name" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 12;" />
-                                    <TextArea wrapText="true" stylesheets="@css/hide_scrollbars.css" fx:id="descriptionField" layoutX="42.0" layoutY="143.0" prefHeight="102.0" prefWidth="354.0" promptText="Description" />
+                                    <TextArea fx:id="descriptionField" layoutX="42.0" layoutY="143.0" prefHeight="102.0" prefWidth="354.0" promptText="Description" stylesheets="@css/hide_scrollbars.css" wrapText="true" />
                                     <Button layoutX="47.0" layoutY="324.0" onAction="#onAttachLogoClick" stylesheets="@css/smallbutton.css" text="Attach file" textFill="WHITE" />
                                     <Text layoutX="42.0" layoutY="447.0" text="Username:" />
                                     <TextField fx:id="usernameField" layoutX="45.0" layoutY="455.0" prefHeight="48.0" prefWidth="354.0" promptText="username" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 12;" />

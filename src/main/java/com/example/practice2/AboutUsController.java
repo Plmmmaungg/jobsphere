@@ -15,58 +15,13 @@ import java.io.IOException;
 
 public class AboutUsController {
 
-    @FXML
-    private Label companyNameLabel;
+    private String rawUsername;
 
-    @FXML
-    private ImageView companyLogoView;
-
-    private int companyId;
-    private String companyName;
-    private Image companyLogo;
-
-    // RECEIVES COMPANY DATA
-    public void setCompanyData(int id, String name, Image logo) {
-        this.companyId = id;
-        this.companyName = name;
-        this.companyLogo = logo;
-
-        if (companyNameLabel != null)
-            companyNameLabel.setText(name);
-
-        if (companyLogoView != null)
-            companyLogoView.setImage(logo);
+    public void setAdminUsername(String username) {
+        this.rawUsername = username;
     }
 
-    // ----------------- DASHBOARD -----------------
-    @FXML
-    private void onDashboardclick(MouseEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedDashboard.fxml"));
-        Parent root = loader.load();
-
-        CreatedAdminCompanyController controller = loader.getController();
-        controller.setCompanyData(companyId, companyName, companyLogo);
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    // ----------------- POSITION PAGE -----------------
-    @FXML
-    private void onPositionClick(MouseEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedPosition.fxml"));
-        Parent root = loader.load();
-
-        PositionController controller = loader.getController();
-        controller.setCompanyData(companyId, companyName, companyLogo);  // FIXED
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
 
     // ----------------- SIGN OUT -----------------
     @FXML
@@ -77,18 +32,29 @@ public class AboutUsController {
         stage.show();
     }
 
-    // ----------------- ABOUT US (REFRESH) -----------------
     @FXML
-    private void onAboutUs(MouseEvent event) throws IOException {
+    private void onBinButtonClick(MouseEvent event) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("bin.fxml"));
+        Parent root = loader.load();
+        BinController controller = loader.getController();
+        controller.setAdminUsername(rawUsername);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedAboutUs.fxml"));
+
+    @FXML
+    private void onDashboardButtonClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("admin_dashboard.fxml"));
         Parent root = loader.load();
 
-        AboutUsController controller = loader.getController();
-        controller.setCompanyData(companyId, companyName, companyLogo);
+        AdminController controller = loader.getController();
+        controller.setAdminUsername(rawUsername);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 }

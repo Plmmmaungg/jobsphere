@@ -210,7 +210,7 @@
                                                             <font><Font size="14.0" /></font>
                                                         </Label>
 
-                                                        <Label layoutX="392.0" layoutY="383.0" text="Religion">
+                                                        <Label layoutX="392.0" layoutY="383.0" text="Status">
                                                             <font><Font size="14.0" /></font>
                                                         </Label>
 

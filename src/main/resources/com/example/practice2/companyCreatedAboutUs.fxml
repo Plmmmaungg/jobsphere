@@ -30,7 +30,7 @@
                                                     <Image url="@images/image/logo_white.png" />
                                                 </image>
                                             </ImageView>
-                                            <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onDashboardclick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar.css" text="     Dashboard" textFill="WHITE">
+                                            <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onDashboardButtonClick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar.css" text="     Dashboard" textFill="WHITE">
                                                 <font>
                                                     <Font name="Franklin Gothic Book" size="17.0" />
                                                 </font>
@@ -40,31 +40,37 @@
                                                     <Image url="@images/image/dashboard logo.png" />
                                                 </image>
                                             </ImageView>
-                                            <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onPositionClick" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar.css" text="Position" textFill="WHITE">
+                                            <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onBinButtonClick" prefHeight="50.0" prefWidth="241.0" style="-fx-padding: 0 25 0 0;" stylesheets="@css/sidebar.css" text="Bin" textFill="WHITE">
                                                 <font>
                                                     <Font name="Franklin Gothic Book" size="17.0" />
                                                 </font>
                                             </Button>
                                             <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
-                                                    <Image url="@images/image/edit logo.png" />
+                                                    <Image url="@images/image/delete icon.png" />
                                                 </image>
                                             </ImageView>
-                                            <ImageView fx:id="companyLogoView" fitHeight="120.0" fitWidth="123.0" layoutX="72.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
-                                            <Label fx:id="companyNameLabel" alignment="TOP_CENTER" layoutX="35.0" layoutY="227.0" prefHeight="50.0" prefWidth="200.0" style="-fx-font-weight: 900;" textFill="WHITE">
-                                                <font>
-                                                    <Font name="Yu Gothic UI Semibold" size="25.0" />
-                                                </font></Label>
-                                            <Button layoutX="12.0" layoutY="442.0" mnemonicParsing="false" onMouseClicked="#onAboutUs" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar2.css" text="   About us" textFill="WHITE">
-                                                <font>
-                                                    <Font name="Franklin Gothic Book" size="17.0" />
-                                                </font>
-                                            </Button>
+                                 <Button layoutX="14.0" layoutY="441.0" mnemonicParsing="false" onMouseClicked="#onBinButtonClick" prefHeight="50.0" prefWidth="241.0" style="-fx-padding: 0 25 0 0;" stylesheets="@css/sidebar.css" text="           About us" textFill="WHITE">
+                                    <font>
+                                       <Font name="Franklin Gothic Book" size="17.0" />
+                                    </font>
+                                 </Button>
+
                                             <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="451.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
                                                     <Image url="@images/image/info.png" />
                                                 </image>
                                             </ImageView>
+                                 <Text fill="WHITE" layoutX="117.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello!">
+                                    <font>
+                                       <Font size="13.0" />
+                                    </font>
+                                 </Text>
+                                 <Label fx:id="usernameLabel" layoutX="113.0" layoutY="188.0" text="Label" textFill="WHITE">
+                                    <font>
+                                       <Font size="17.0" />
+                                    </font>
+                                 </Label>
                                         </children>
                                     </AnchorPane>
                                 </children>
@@ -94,7 +100,7 @@
                     <!-- Main Content Area -->
                     <VBox prefHeight="702.0" prefWidth="1056.0" style="-fx-background-color: #f2f2f2;">
                         <children>
-                            <AnchorPane onDragDetected="#onPositionClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
+                            <AnchorPane onDragDetected="#onBinButtonClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
                                 <children>
                                     <ImageView fitHeight="170.0" fitWidth="243.0" layoutX="-12.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
                                         <image>

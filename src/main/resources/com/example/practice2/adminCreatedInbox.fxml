@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.PositionController">
+<VBox prefHeight="702.0" prefWidth="1270.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.adminCreatedInboxController">
 
     <children>
         <VBox prefHeight="834.0" prefWidth="1212.0">
@@ -32,7 +30,7 @@
                                                     <Image url="@images/image/logo_white.png" />
                                                 </image>
                                             </ImageView>
-                                            <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onDashboardclick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar.css" text="     Dashboard" textFill="WHITE">
+                                            <Button layoutX="13.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#onDashboardclick" prefHeight="50.0" prefWidth="242.0" stylesheets="@css/sidebar2.css" text="     Dashboard" textFill="WHITE">
                                                 <font>
                                                     <Font name="Franklin Gothic Book" size="17.0" />
                                                 </font>
@@ -42,7 +40,7 @@
                                                     <Image url="@images/image/dashboard logo.png" />
                                                 </image>
                                             </ImageView>
-                                            <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar2.css" text="Position" textFill="WHITE">
+                                            <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" onMouseClicked="#onPositionClick" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar.css" text="Position" textFill="WHITE">
                                                 <font>
                                                     <Font name="Franklin Gothic Book" size="17.0" />
                                                 </font>
@@ -57,12 +55,12 @@
                                                 <font>
                                                     <Font name="Yu Gothic UI Semibold" size="25.0" />
                                                 </font></Label>
-                                            <Button layoutX="12.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#onInboxClick" prefHeight="50.0" prefWidth="241.0" stylesheets="@css/sidebar.css" text="   About us" textFill="WHITE">
+                                            <Button layoutX="15.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#onInboxClick" prefHeight="50.0" prefWidth="241.0" style="-fx-label-padding: 0 19 0 0;" stylesheets="@css/sidebar.css" text="Inbox" textFill="WHITE">
                                                 <font>
                                                     <Font name="Franklin Gothic Book" size="17.0" />
                                                 </font>
                                             </Button>
-                                            <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+                                            <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="53.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
                                                     <Image url="@images/image/info.png" />
                                                 </image>
@@ -96,50 +94,7 @@
                     <!-- Main Content Area -->
                     <VBox prefHeight="702.0" prefWidth="1056.0" style="-fx-background-color: #f2f2f2;">
                         <children>
-                            <AnchorPane onDragDetected="#onPositionClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;">
-                                <children>
-                                    <TextField fx:id="onBranchTextField" layoutX="63.0" layoutY="179.0" prefHeight="40.0" prefWidth="262.0" promptText="Branch" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 0 0 0 20;" />
-                                    <TextField fx:id="onLocationTextField" layoutX="378.0" layoutY="176.0" prefHeight="40.0" prefWidth="265.0" promptText="Location" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 0 0 0 20;" />
-                                    <TextField fx:id="onPositionTextField" layoutX="687.0" layoutY="176.0" prefHeight="40.0" prefWidth="266.0" promptText="Position" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 0 0 0 20;" />
-                                    <Button fx:id="addPosition" layoutX="904.0" layoutY="229.0" mnemonicParsing="false" onAction="#addPosition" stylesheets="@css/smallbutton.css" text="add" />
-                                    <Button fx:id="onEdit" layoutX="562.0" layoutY="229.0" mnemonicParsing="false" onAction="#addLocation" stylesheets="@css/smallbutton.css" text=" location" />
-                                    <Button fx:id="addBranchAddress" layoutX="273.0" layoutY="230.0" mnemonicParsing="false" onAction="#addBranch" stylesheets="@css/smallbutton.css" text="Add" />
-                                    <ListView fx:id="viewBranch" layoutX="67.0" layoutY="340.0" prefHeight="291.0" prefWidth="259.0" stylesheets="@css/viewlist.css" />
-                                    <ListView fx:id="viewLocation" layoutX="380.0" layoutY="339.0" prefHeight="291.0" prefWidth="259.0" stylesheets="@css/viewlist.css" />
-                                    <ListView fx:id="viewPosition" layoutX="693.0" layoutY="340.0" prefHeight="291.0" prefWidth="259.0" stylesheets="@css/viewlist.css" />
-                                    <AnchorPane layoutX="67.0" layoutY="306.0" prefHeight="34.0" prefWidth="260.0" style="-fx-background-color: #77c2de; -fx-background-radius: 10 10 0 0;">
-                                        <children>
-                                            <Label layoutX="105.0" layoutY="6.0" text="Branch">
-                                                <font>
-                                                    <Font size="16.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </AnchorPane>
-                                    <AnchorPane layoutX="380.0" layoutY="306.0" prefHeight="34.0" prefWidth="260.0" style="-fx-background-color: #77c2de; -fx-background-radius: 10 10 0 0;">
-                                        <children>
-                                            <Label layoutX="106.0" layoutY="7.0" text="Location">
-                                                <font>
-                                                    <Font size="16.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </AnchorPane>
-                                    <AnchorPane layoutX="693.0" layoutY="306.0" prefHeight="34.0" prefWidth="260.0" style="-fx-background-color: #77c2de; -fx-background-radius: 10 10 0 0;">
-                                        <children>
-                                            <Label layoutX="107.0" layoutY="6.0" text="Position">
-                                                <font>
-                                                    <Font size="16.0" />
-                                                </font>
-                                            </Label>
-                                        </children>
-                                    </AnchorPane>
-                                    <Text layoutX="42.0" layoutY="80.0" text="Manage your Company" textAlignment="CENTER" wrappingWidth="254.87261962890625">
-                                        <font>
-                                            <Font name="System Bold" size="34.0" />
-                                        </font>
-                                    </Text>
-                                </children></AnchorPane>
+                            <AnchorPane onDragDetected="#onPositionClick" prefHeight="702.0" prefWidth="1006.0" style="-fx-background-color: #f2f2f2;" />
                         </children>
                     </VBox>
                 </HBox>

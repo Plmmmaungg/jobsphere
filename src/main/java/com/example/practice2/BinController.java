@@ -55,4 +55,19 @@ public class BinController {
         stage.setScene(new Scene(loginRoot));
         stage.show();
     }
+
+
+    @FXML
+    private void onAboutUs(MouseEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedAboutUs.fxml"));
+        Parent root = loader.load();
+
+        AboutUsController controller = loader.getController();
+        controller.setAdminUsername(rawUsername);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

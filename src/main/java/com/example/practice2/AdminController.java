@@ -28,6 +28,8 @@ public class AdminController {
     @FXML private TableColumn<RecentApplication, String> viewStatus;
     private String companyName;
     private Runnable onLoginSuccess;
+    @FXML private TextField companyNameField, usernameField;
+    @FXML private TextField onSearch;  // ⭐ ADD THIS
 
     public void setCompanyName(String name) {
         this.companyName = name;
@@ -42,9 +44,6 @@ public class AdminController {
 
     @FXML
     private Button addButton;
-
-    @FXML
-    private TextField companyNameField, usernameField;
 
     @FXML
     private TextArea descriptionField;
@@ -275,8 +274,91 @@ public class AdminController {
         loadCompaniesFromDatabase();
         loadRecentApplications();
 
+        // ⭐ NEW: Live Search
+        onSearch.textProperty().addListener((obs, oldVal, newVal) -> {
+            filterCompanies(newVal);
+            filterRecentApplications(newVal);
+        });
 
     }
+
+    private void filterCompanies(String keyword) {
+        keyword = keyword.toLowerCase().trim();
+
+        displayCardCompany.getChildren().clear();
+
+        String sql = "SELECT id, company_name, username, password, logo_path FROM companies";
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             var rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                String name = rs.getString("company_name");
+
+                // skip if it doesn't match search
+                if (!name.toLowerCase().contains(keyword)) continue;
+
+                int companyId = rs.getInt("id");
+                String user = rs.getString("username");
+                String pass = rs.getString("password");
+
+                String logoPath = rs.getString("logo_path");
+                Image logo = (logoPath != null && new File(logoPath).exists())
+                        ? new Image(new File(logoPath).toURI().toString())
+                        : null;
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCard.fxml"));
+                Node card = loader.load();
+
+                CompanyCardController controller = loader.getController();
+                controller.setCompanyId(companyId);
+                controller.setCompanyData(name, logo);
+                controller.setParentContainer(displayCardCompany);
+                controller.setRootNode(card);
+
+                controller.setOnCardClicked(() ->
+                        openSecurityForm(companyId, name, user, pass, logo)
+                );
+
+                displayCardCompany.getChildren().add(card);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void filterRecentApplications(String keyword) {
+        keyword = keyword.toLowerCase().trim();
+
+        recentlyApply.getItems().clear();
+
+        String sql = "SELECT name, company, date, status FROM recently_applied";
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             var rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+
+                String company = rs.getString("company");
+
+                // Skip if company does not match search
+                if (!company.toLowerCase().contains(keyword)) continue;
+
+                recentlyApply.getItems().add(new RecentApplication(
+                        rs.getString("name"),
+                        company,
+                        rs.getString("date"),
+                        rs.getString("status")
+                ));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void openCompanyLoginFromRow(RecentApplication selected, TableRow<RecentApplication> row) {
         selectedRecentApp = selected;
@@ -424,7 +506,27 @@ public class AdminController {
 
     @FXML
     private void onDashboardButtonClick(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("admin_dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("admin_dashboard.fxml"));
+        Parent root = loader.load();
+
+        AdminController controller = loader.getController();
+        controller.setAdminUsername(rawUsername);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+
+    @FXML
+    private void onAboutUs(MouseEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedAboutUs.fxml"));
+        Parent root = loader.load();
+
+        AboutUsController controller = loader.getController();
+        controller.setAdminUsername(rawUsername);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();

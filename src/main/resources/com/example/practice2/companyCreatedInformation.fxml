@@ -153,7 +153,7 @@
                                                    <Font name="Franklin Gothic Book" size="19.0" />
                                                 </font>
                                              </Label>
-                                             <Label layoutX="130.0" layoutY="375.0" text="Occupation      :">
+                                             <Label layoutX="130.0" layoutY="375.0" text="Status                 :">
                                                 <font>
                                                    <Font name="Franklin Gothic Book" size="19.0" />
                                                 </font>

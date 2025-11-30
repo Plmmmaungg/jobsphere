@@ -83,7 +83,7 @@ public class CreatedAdminCompanyController {
     }
 
 
-    
+
     // ----------------- OPEN APPLICANT DETAILS -----------------
     private void openApplicantDetails(int applicantId) {
         try {
@@ -144,16 +144,16 @@ public class CreatedAdminCompanyController {
         stage.show();
     }
 
-    @FXML
-    private void onAboutUs(MouseEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedAboutUs.fxml"));
+    @FXML
+    private void onInboxClick(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("adminCreatedInbox.fxml"));
         Parent root = loader.load();
 
-        AboutUsController controller = loader.getController();
+        adminCreatedInboxController controller = loader.getController();
         controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }
