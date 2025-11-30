@@ -82,6 +82,8 @@ public class CreatedAdminCompanyController {
         }
     }
 
+
+    
     // ----------------- OPEN APPLICANT DETAILS -----------------
     private void openApplicantDetails(int applicantId) {
         try {

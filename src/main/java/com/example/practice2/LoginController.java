@@ -91,8 +91,9 @@ public class LoginController {
             try (Connection conn = DatabaseConnection.connect();
                  PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-                stmt.setString(1, username);
-                stmt.setString(2, password);
+                stmt.setString(1, username.trim());
+                stmt.setString(2, password.trim());
+
 
                 ResultSet rs = stmt.executeQuery();
 

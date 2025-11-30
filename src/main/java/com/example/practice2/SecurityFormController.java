@@ -133,6 +133,8 @@ public class SecurityFormController {
             onLoginSuccess.run();
         }
 
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedDashboard.fxml"));
         Parent root = loader.load();
 

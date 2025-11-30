@@ -60,7 +60,7 @@ public class AdminController {
 
     @FXML
     private AnchorPane securityFormContainer;
-
+    private RecentApplication selectedRecentApp;
     private Image uploadedLogo;
     private File logoFile;
 
@@ -189,23 +189,23 @@ public class AdminController {
 
     // ✅ Show SecurityForm.fxml inside admin dashboard
 
-
-
     private void openSecurityForm(int companyId, String companyName, String username, String password, Image logo) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("securityForm.fxml"));
             AnchorPane securityForm = loader.load();
 
             SecurityFormController controller = loader.getController();
+
+            // pass data
             controller.setCompanyData(companyId, companyName, username, password, logo);
             controller.setParentController(this);
 
+            // ⭐ correct callback placement
             controller.setOnLoginSuccess(() -> {
+                removeRecentApplication();
                 displayCardCompany.setVisible(false);
                 displayCardCompany.setManaged(false);
             });
-
-
 
             // show only security form
             securityFormContainer.getChildren().setAll(securityForm);
@@ -223,6 +223,26 @@ public class AdminController {
 
 
 
+    public void removeRecentApplication() {
+        if (selectedRecentApp == null) return;
+
+        // remove from TableView UI
+        recentlyApply.getItems().remove(selectedRecentApp);
+
+        // remove from database
+        try (Connection conn = DatabaseConnection.connect()) {
+            String sql = "DELETE FROM recently_applied WHERE name = ? AND company = ? AND date = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, selectedRecentApp.getName());
+            stmt.setString(2, selectedRecentApp.getCompany());
+            stmt.setString(3, selectedRecentApp.getDate());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        selectedRecentApp = null; // clear
+    }
 
 
     // ✅ Called from SecurityFormController when clicking Back
@@ -259,6 +279,7 @@ public class AdminController {
     }
 
     private void openCompanyLoginFromRow(RecentApplication selected, TableRow<RecentApplication> row) {
+        selectedRecentApp = selected;
         String companyName = selected.getCompany();
 
         try (Connection conn = DatabaseConnection.connect()) {
