@@ -111,7 +111,7 @@
                                  </VBox>
                                  <ScrollPane hbarPolicy="NEVER" prefHeight="656.0" prefWidth="262.0" style="-fx-background-color: #f2f2f2;" vbarPolicy="NEVER">
                                     <content>
-                                       <VBox fx:id="showUserMessageBox" prefHeight="722.0" prefWidth="259.0" />
+                                       <VBox fx:id="messagesContainer" prefHeight="722.0" prefWidth="259.0" />
                                     </content>
                                  </ScrollPane>
                               </children>

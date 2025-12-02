@@ -114,11 +114,14 @@
                                        <Font size="20.0" />
                                     </font>
                                  </Label>
-                                 <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #f2f2f2;" vbarPolicy="NEVER">
-                                    <content>
-                                       <VBox fx:id="viewMessageBox" alignment="TOP_CENTER" prefHeight="686.0" prefWidth="271.0" style="-fx-background-color: #f2f2f2;" />
-                                    </content>
-                                 </ScrollPane>
+                                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: #f2f2f2;" vbarPolicy="AS_NEEDED">
+                                      <content>
+                                          <VBox fx:id="viewMessageBox" prefHeight="722.0" prefWidth="259.0">
+                                              <!-- Messages will be inserted here -->
+                                          </VBox>
+                                      </content>
+                                  </ScrollPane>
+
                               </children>
                            </VBox>
                            <VBox prefHeight="702.0" prefWidth="733.0" style="-fx-background-color: white;">
