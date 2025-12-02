@@ -109,9 +109,16 @@
                                        </Label>
                                     </children>
                                  </VBox>
-                                 <ScrollPane hbarPolicy="NEVER" prefHeight="656.0" prefWidth="262.0" style="-fx-background-color: #f2f2f2;" vbarPolicy="NEVER">
+                                 <ScrollPane hbarPolicy="NEVER" prefHeight="656.0" prefWidth="262.0" style="-fx-background-color: #f2f2f2; -fx-fit-to-width: true;" vbarPolicy="NEVER" pannable="true">
                                     <content>
-                                       <VBox fx:id="messagesContainer" prefHeight="722.0" prefWidth="259.0" />
+                                        <VBox
+                                                fx:id="showUserMessageBox"
+                                                prefHeight="637.0"
+                                                prefWidth="262.0"
+                                                spacing="10"
+                                                style="-fx-padding: 20 0 20 0;"
+                                        />
+
                                     </content>
                                  </ScrollPane>
                               </children>
@@ -121,8 +128,9 @@
                                  <AnchorPane prefHeight="880.0" prefWidth="742.0">
                                     <children>
                                        <Text layoutX="68.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To:" />
-                                       <Text layoutX="95.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="applicant name" />
-                                       <TextFlow fx:id="viewMessage" layoutX="111.0" layoutY="109.0" prefHeight="401.0" prefWidth="579.0" />
+                                        <Text fx:id="toApplicantName" layoutX="95.0" layoutY="77.0" text="applicant name" />
+
+                                        <TextFlow fx:id="viewMessage" layoutX="111.0" layoutY="109.0" prefHeight="401.0" prefWidth="579.0" />
                                     </children>
                                  </AnchorPane>
                               </children>

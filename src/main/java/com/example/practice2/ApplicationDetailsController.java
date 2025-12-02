@@ -185,7 +185,39 @@ public class ApplicationDetailsController {
 
     @FXML
     private void btnSendMessage(MouseEvent event) {
-        String message = sendMessage.getText();
+        String message = sendMessage.getText().trim();
 
+        if (message.isEmpty()) return;
+
+        String sql = "INSERT INTO messages (applicant_id, company_id, sender, message_text) VALUES (?, ?, 'ADMIN', ?)";
+
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, applicantId);
+            stmt.setInt(2, companyId);
+            stmt.setString(3, message);
+
+            stmt.executeUpdate();
+            sendMessage.clear();
+
+            // 🔥 AFTER SAVING → SWITCH TO INBOX
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("adminCreatedInbox.fxml"));
+            Parent root = loader.load();
+
+            adminCreatedInboxController controller = loader.getController();
+            controller.setCompanyData(companyId, companyName, companyLogo); // <--- important
+
+            // loads messages automatically in setCompanyData()
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
 }

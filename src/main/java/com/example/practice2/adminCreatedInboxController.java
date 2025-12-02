@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -29,18 +30,27 @@ public class adminCreatedInboxController {
     @FXML private VBox showUserMessageBox;   // LEFT MESSAGE LIST
     @FXML private TextFlow viewMessage;      // RIGHT MESSAGE CONTENT
 
+
+    @FXML private Text toApplicantName;
+
     private int companyId;
+    private String selectedApplicantName;
+    private int selectedApplicantId;
 
-    public void setCompanyData(int companyId, String companyName, Image logo) {
-        this.companyId = companyId;
-        companyNameLabel.setText(companyName);
 
-        if (logo != null) {
-            companyLogoView.setImage(logo);
-        }
 
-        loadMessagesForCompany();
+    public void initialize() {
+        // nothing yet
     }
+
+    public void setCompanyData(int companyId, String name, Image logo) {
+        this.companyId = companyId;
+        this.companyLogoView.setImage(logo);
+        this.companyNameLabel.setText(name);
+
+        loadMessages();   // <<-- IMPORTANT
+    }
+
 
     // -----------------------------------------------------------------------
     // LOAD ALL MESSAGES SENT TO THIS COMPANY BY USERS
@@ -91,12 +101,6 @@ public class adminCreatedInboxController {
         return item;
     }
 
-    private void showMessage(String message) {
-        viewMessage.getChildren().clear();
-        Text text = new Text(message);
-        text.setStyle("-fx-font-size: 16px;");
-        viewMessage.getChildren().add(text);
-    }
 
     // -----------------------------------------------------------------------
     // NAVIGATION
@@ -146,4 +150,69 @@ public class adminCreatedInboxController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    public void loadMessages() {
+
+        showUserMessageBox.getChildren().clear();
+
+        String sql = """
+        SELECT m.message_text, m.applicant_id,
+               a.first_name, a.middle_initial, a.last_name
+        FROM messages m
+        JOIN applicants a ON m.applicant_id = a.id
+        WHERE m.company_id = ?
+        ORDER BY m.date_sent DESC
+    """;
+
+        try (Connection conn = DatabaseConnection.connect();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, companyId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                int applicantId = rs.getInt("applicant_id");
+
+                String fullName =
+                        rs.getString("last_name") + ", " +
+                                rs.getString("first_name") + " " +
+                                rs.getString("middle_initial") + ".";
+
+                String fullMessage = rs.getString("message_text");
+
+                // Load FXML box
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("messageBoxAdmin.fxml"));
+                AnchorPane box = loader.load();
+
+                MessageBoxAdminController controller = loader.getController();
+
+                controller.setUserName(fullName);
+
+                controller.setOnClickAction(() -> {
+                    selectedApplicantName = fullName;
+                    selectedApplicantId = applicantId;
+                    showMessage(fullMessage);
+                });
+
+                showUserMessageBox.getChildren().add(box);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showMessage(String message) {
+        viewMessage.getChildren().clear();
+
+        // Update "To: <name>"
+        toApplicantName.setText(selectedApplicantName);
+
+        Text text = new Text(message);
+        text.setStyle("-fx-font-size: 16;");
+        viewMessage.getChildren().add(text);
+    }
+
+
 }

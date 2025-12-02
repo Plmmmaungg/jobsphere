@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:controller="com.example.practice2.MessageBoxAdminController"
-            prefHeight="50.0" prefWidth="300.0"
-            minHeight="50.0" maxHeight="50.0"
-            style="-fx-background-radius: 10; -fx-background-color: white;"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="210.0" style="-fx-background-radius: 10; -fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.practice2.MessageBoxAdminController">
 
     <children>
-        <Label fx:id="adminDisplayUserName"
-               layoutX="20"
-               layoutY="15"
-               prefWidth="260"
-               text="User Name"
-        />
+        <Label fx:id="adminDisplayUserName" layoutX="20" layoutY="15" prefWidth="210" text="User Name" />
     </children>
 
 </AnchorPane>
