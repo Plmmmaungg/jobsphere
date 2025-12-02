@@ -148,15 +148,13 @@ public class PositionController {
 
     @FXML
     private void onDashboardclick(MouseEvent event) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedDashboard.fxml"));
         Parent root = loader.load();
 
         CreatedAdminCompanyController controller = loader.getController();
-        controller.setCompanyData(companyId, companyNameLabel.getText(),   companyLogoView.getImage());      // <-- send company name
-               // send only controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
+        controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
 
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
     }

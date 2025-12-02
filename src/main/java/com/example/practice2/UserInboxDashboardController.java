@@ -1,4 +1,3 @@
-
 package com.example.practice2;
 
 import javafx.fxml.FXML;
@@ -8,19 +7,30 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class UserInboxDashboardController {
 
-    private int companyId;
+    @FXML private VBox viewMessageBox;
+    @FXML private TextFlow viewMessage;
+    @FXML private Label usernameLabel;
 
-    private String currentUsername;
+    private int currentUserId = -1;   // FIX: avoid triggering loadMessages with empty ID
+    private int companyId;
+    private String currentUserEmail;
 
 
 
     public void setCompanyId(int id) { this.companyId = id; }
+
+    public void setUsername(String username) {
+        this.currentUserEmail = username;
+        usernameLabel.setText("@" + username);
+    }
 
     @FXML
     private void onSignOutClick(MouseEvent event) throws IOException {
@@ -29,7 +39,6 @@ public class UserInboxDashboardController {
         stage.setScene(new Scene(registerRoot));
         stage.show();
     }
-
 
     @FXML
     private void onUserDashboardClick(MouseEvent event) throws Exception {
@@ -43,7 +52,6 @@ public class UserInboxDashboardController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-
     }
 
     @FXML
@@ -58,22 +66,5 @@ public class UserInboxDashboardController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
-
     }
-
-    @FXML
-    private Label usernameLabel; // this is your label showing @username
-
-    private String currentUserEmail;
-
-    public void setUsername(String username) {
-        this.currentUserEmail = username;
-        usernameLabel.setText("@" + username);
-    }
-
-
-
-
 }
-
-

@@ -100,7 +100,7 @@ public class UserProfileController {
         viewGender.setText(rs.getString("gender"));
         viewNationality.setText(rs.getString("nationality"));
         viewStatus.setText(rs.getString("occupation"));
-        viewReligion.setText(rs.getString("religion"));
+        viewReligion.setText(rs.getString("status"));
 
         viewPosition.setText(rs.getString("position"));
         viewBranch.setText(rs.getString("branch"));
@@ -145,7 +145,7 @@ public class UserProfileController {
                 viewGender.setText(rs.getString("gender"));
                 viewNationality.setText(rs.getString("nationality"));
                 viewStatus.setText("New");
-                viewReligion.setText(rs.getString("religion"));
+                viewReligion.setText(rs.getString("status"));
 
                 viewPosition.setText(rs.getString("position"));
                 viewBranch.setText(rs.getString("branch"));

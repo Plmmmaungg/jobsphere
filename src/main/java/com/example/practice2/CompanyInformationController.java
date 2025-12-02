@@ -57,7 +57,8 @@ public class CompanyInformationController {
 
     @FXML private TextField nationalityField;
     @FXML private TextField occupationField;
-    @FXML private TextField religionField;
+    @FXML private TextField statusField;
+
 
 
 
@@ -297,6 +298,8 @@ public class CompanyInformationController {
         String ln = lastNameField.getText();
         String email = emailField.getText();
         String ageText = ageField.getText();
+        String contact = contactField.getText();
+
 
         if (fn == null || fn.trim().isEmpty()) {
             new Alert(Alert.AlertType.WARNING, "First name is required.").show();
@@ -310,6 +313,12 @@ public class CompanyInformationController {
             new Alert(Alert.AlertType.WARNING, "Please enter a valid email address.").show();
             return false;
         }
+
+        if (contact == null || !contact.matches("\\d{11}")) {
+            new Alert(Alert.AlertType.WARNING, "Contact number must be exactly 11 digits.").show();
+            return false;
+        }
+
         if (ageText != null && !ageText.trim().isEmpty()) {
             try {
                 int age = Integer.parseInt(ageText.trim());
@@ -329,7 +338,7 @@ public class CompanyInformationController {
     private boolean saveApplicantToDatabase() {
 
         String insertApplicantSQL =
-                "INSERT INTO applicants (company_id, first_name, last_name, middle_initial, date_of_birth, age, gender, contact, email, address, nationality, occupation, religion, picture_path, resume_path, philhealth_path, branch, location, position, user_id) " +
+                "INSERT INTO applicants (company_id, first_name, last_name, middle_initial, date_of_birth, age, gender, contact, email, address, nationality, occupation, status, picture_path, resume_path, philhealth_path, branch, location, position, user_id) " +
                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         String insertRecentSQL =
@@ -360,7 +369,7 @@ public class CompanyInformationController {
             applicantStmt.setString(10, addressField.getText().trim());
             applicantStmt.setString(11, nationalityField.getText().trim());
             applicantStmt.setString(12, occupationField.getText().trim());
-            applicantStmt.setString(13, religionField.getText().trim());
+            applicantStmt.setString(13, statusField.getText().trim());
             applicantStmt.setString(14, selectedPicturePath);
             applicantStmt.setString(15, selectedResumePath);
             applicantStmt.setString(16, selectedPhilPath);
@@ -526,5 +535,6 @@ public class CompanyInformationController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 
 }
