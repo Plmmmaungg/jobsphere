@@ -42,14 +42,14 @@
                                        <Image url="@images/image/dashboard logo.png" />
                                     </image>
                                  </ImageView>
-                                 <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="241.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-padding: 0 30 0 0;" text="Bin" textFill="WHITE">
+                                 <Button layoutX="14.0" layoutY="371.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="241.0" style="-fx-background-color: black; -fx-background-radius: 20; -fx-padding: 0 30 0 0;" text="       Position" textFill="WHITE">
                                     <font>
                                        <Font name="Franklin Gothic Book" size="17.0" />
                                     </font>
                                  </Button>
                                  <ImageView fitHeight="29.0" fitWidth="36.0" layoutX="52.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                       <Image url="@images/image/delete icon.png" />
+                                       <Image url="@images/image/edit logo.png" />
                                     </image>
                                  </ImageView>
                                  <ImageView fx:id="companyLogoView" fitHeight="120.0" fitWidth="123.0" layoutX="72.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true" />
@@ -230,12 +230,12 @@
                                              </Label>
                                              <Button fx:id="viewResume" layoutX="200.0" layoutY="647.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Resume" />
                                              <Button fx:id="viewPhilH" layoutX="201.0" layoutY="702.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="PhilH" />
-                                             <TextArea layoutX="54.0" layoutY="849.0" prefHeight="250.0" prefWidth="834.0" promptText="Message" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-padding: 0 20 0 20;">
+                                             <TextArea fx:id="sendMessage" layoutX="54.0" layoutY="849.0" prefHeight="250.0" prefWidth="834.0" promptText="Message" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-color: black; -fx-border-radius: 30; -fx-padding: 0 20 0 20;">
                                                 <font>
                                                    <Font size="18.0" />
                                                 </font>
                                              </TextArea>
-                                             <Button fx:id="btnSendMessage" layoutX="786.0" layoutY="1119.0" mnemonicParsing="false" stylesheets="@css/smallbutton.css" text="Send" />
+                                             <Button layoutX="786.0" layoutY="1119.0" mnemonicParsing="false" onMouseClicked="#btnSendMessage" stylesheets="@css/smallbutton.css" text="Send" />
                                              <ImageView fx:id="viewFile" fitHeight="655.0" fitWidth="474.0" layoutX="271.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true" />
                                              <Label layoutX="364.0" layoutY="510.0" text="Location:">
                                                 <font>

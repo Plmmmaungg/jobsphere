@@ -78,11 +78,11 @@ public class adminCreatedInboxController {
         stage.show();
     }
     @FXML
-    private void onDashboardclick(MouseEvent event) throws IOException {
+    private void onDashboardClick(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("companyCreatedDashboard.fxml"));
         Parent root = loader.load();
 
-        PositionController controller = loader.getController();
+        adminCreatedInboxController controller = loader.getController();
         controller.setCompanyData(companyId, companyNameLabel.getText(), companyLogoView.getImage());
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
