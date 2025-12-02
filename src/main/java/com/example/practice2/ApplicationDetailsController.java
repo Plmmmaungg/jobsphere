@@ -25,28 +25,46 @@ public class ApplicationDetailsController {
     private Image companyLogo;
     private int applicantId;
 
-    @FXML private Label viewName;
-    @FXML private Label viewAge;
-    @FXML private Label viewGender;
-    @FXML private Label viewContact;
-    @FXML private Label viewEmail;
-    @FXML private Label viewAddress;
-    @FXML private Label viewNationality;
-    @FXML private Label viewOccupation;
-    @FXML private Label viewStatus;
-    @FXML private Label viewPosition;
-    @FXML private Label viewLocation;
-    @FXML private Label viewBranch;
-    @FXML private TextArea sendMessage;
+    @FXML
+    private Label viewName;
+    @FXML
+    private Label viewAge;
+    @FXML
+    private Label viewGender;
+    @FXML
+    private Label viewContact;
+    @FXML
+    private Label viewEmail;
+    @FXML
+    private Label viewAddress;
+    @FXML
+    private Label viewNationality;
+    @FXML
+    private Label viewOccupation;
+    @FXML
+    private Label viewStatus;
+    @FXML
+    private Label viewPosition;
+    @FXML
+    private Label viewLocation;
+    @FXML
+    private Label viewBranch;
+    @FXML
+    private TextArea sendMessage;
 
-    @FXML private ImageView view2x2Photo;
+    @FXML
+    private ImageView view2x2Photo;
     private String companyLogoPath;
 
-    @FXML private ImageView viewFile;
-    @FXML private Button viewResume;
-    @FXML private Button viewPhilH;
+    @FXML
+    private ImageView viewFile;
+    @FXML
+    private Button viewResume;
+    @FXML
+    private Button viewPhilH;
 
-    @FXML private ImageView backButton;
+    @FXML
+    private ImageView backButton;
 
     @FXML
     private void initialize() {
@@ -169,42 +187,5 @@ public class ApplicationDetailsController {
     private void btnSendMessage(MouseEvent event) {
         String message = sendMessage.getText();
 
-        if (message == null || message.trim().isEmpty()) {
-            new Alert(Alert.AlertType.WARNING, "Message cannot be empty").show();
-            return;
-        }
-
-        // Save to database
-        String insertSql =
-                "INSERT INTO messages (message_text, applicant_id, user_id, company_id, branch, company_name, company_logo_path) "
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        try (Connection conn = DatabaseConnection.connect();
-             PreparedStatement ps = conn.prepareStatement(insertSql)) {
-
-            ps.setString(1, message);          // message_text
-            ps.setInt(2, applicantId);         // applicant_id
-            ps.setInt(3, companyId);           // user_id (admin sending)
-            ps.setInt(4, companyId);           // company_id
-            ps.setString(5, viewBranch.getText()); // branch
-            ps.setString(6, companyName);      // company_name
-            ps.setString(7, companyLogoPath);  // logo
-
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to save message.").show();
-            return;
-        }
-
-        // Show confirmation
-        new Alert(Alert.AlertType.INFORMATION, "Your message has been sent.").showAndWait();
-
-
-        sendMessage.clear();
     }
-
-
-
 }
