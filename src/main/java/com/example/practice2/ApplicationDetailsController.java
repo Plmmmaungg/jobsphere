@@ -92,9 +92,9 @@ public class ApplicationDetailsController {
 
             if (rs.next()) {
 
-                viewName.setText(rs.getString("last_name") + ", "
-                        + rs.getString("first_name") + " "
-                        + rs.getString("middle_initial") + ".");
+                viewName.setText(rs.getString("first_name") + " "
+                        + rs.getString("middle_initial ") + "."
+                        + rs.getString("last_name "));
 
                 viewAge.setText(rs.getString("age"));
                 viewGender.setText(rs.getString("gender"));

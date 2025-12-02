@@ -175,9 +175,9 @@ public class adminCreatedInboxController {
                 int applicantId = rs.getInt("applicant_id");
 
                 String fullName =
-                        rs.getString("last_name") + ", " +
-                                rs.getString("first_name") + " " +
-                                rs.getString("middle_initial") + ".";
+                        rs.getString("first_name") + " " +
+                                rs.getString("middle_initial") + ". " +
+                                rs.getString("last_name");
 
                 String fullMessage = rs.getString("message_text");
 

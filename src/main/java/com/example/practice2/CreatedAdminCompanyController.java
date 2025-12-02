@@ -63,6 +63,7 @@ public class CreatedAdminCompanyController {
                         rs.getString("first_name") + " " +
                         rs.getString("middle_initial") + ".";
 
+
                 ListOfApplicant.getItems().add(id + " - " + fullName);
                 count++;
             }
